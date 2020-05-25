@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pombos', 'PomboController@index');
+Route::get('/pombais', 'PombalController@index');
+
+Route::resource('pombo', 'PomboController');
+Route::resource('pombal', 'PombalController');
+// use "php artisan route:list" para ver as rotas
