@@ -96,7 +96,7 @@ class PomboController extends Controller
             'pai_id' => 'numeric',
             'mae_id' => 'numeric',
             // 'cor' => 'required',
-            'pombal_id' => 'numeric',
+            'pombal' => 'required',
         ];
 
         $messages = [
