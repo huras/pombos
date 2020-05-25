@@ -33,7 +33,7 @@
             <td>{{$item->id}}</td>
             <td>
                 @if($item->foto)
-                    <img style='max-width: 50px; border-radius: 50%;' src='/img/pombo/{{$item->foto."_thumb"}}'>
+                    <img style='max-width: 50px; border-radius: 50%;' src='/img/pombo/{{$item->foto}}'>
                 @endif
             </td>
             <td>{{$item->anilha}}</td>

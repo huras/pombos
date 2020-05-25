@@ -39,20 +39,16 @@ class PomboController extends Controller
         // Set date format
         $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
 
-        // Upload foto
-        $cover = $request->file('foto');
+        //upload de foto
+        $cover = $request->file('foto');        
         if ($cover) {
             $novo_nome_imagem = rand(). '.' .$cover->getClientOriginalExtension();
-
-            //move a imagem para o diretorio correcto
-            $cover->move(public_path("/img/pombo/"), $novo_nome_imagem);
-
+            //move a iamgem para o diretorio correcto
+            $cover->move(public_path("img/pombo/"), $novo_nome_imagem);
             //salva a imagem na ram e dá o resize
-            $imgcrop = Image::make(public_path("/img/pombo/".$novo_nome_imagem))->resize(250,250);
-
+            $imgcrop = Image::make(public_path("img/pombo/".$novo_nome_imagem))->resize(250,250);
             //salva a imagem cropada na pasta com o mesmo nome da original substituindo
-            $imgcrop->save(public_path("/img/pombo/".$novo_nome_imagem."_thumb"));
-
+            $imgcrop->save(public_path("img/pombo/".$novo_nome_imagem));
             $data['foto'] = $novo_nome_imagem;
         }
 
