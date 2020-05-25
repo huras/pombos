@@ -65,9 +65,11 @@
                 </select>
             </div>
 
-            @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array( 'Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB')])
+            @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB')])
 
-            <div class="form-group">
+            @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array('Pombal de Santa Luzia', 'Pombal BH', 'Pombal Contagem')])
+
+            {{-- <div class="form-group">
                 <span> Pombal: </spán>
                 <select class="form-control pombo-select2" name="pombal_id">
                     <option value="-1" disabled selected> Pesquisar ... </option>
@@ -75,7 +77,7 @@
                         <option value="{{$pombal->id}}"> {{$pombal->nome}} </option>
                     @endforeach
                 </select>
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label class='w-100'>
