@@ -65,7 +65,7 @@
                 </select>
             </div>
 
-            @include('components.textInput', ['label'=>'Cor', 'name'=>'cor'])
+            @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array( 'Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB')])
 
             <div class="form-group">
                 <span> Pombal: </spán>
