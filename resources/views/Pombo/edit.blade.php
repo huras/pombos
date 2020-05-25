@@ -29,7 +29,15 @@
             
             @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'mask' => 'integer-mask', 'value' => $pombo->anilha])
             @include('components.textInput', ['label'=>'Nome', 'name'=>'nome', 'value' => $pombo->nome])
-            @include('components.textInput', ['label'=>'Data de Nascimento', 'name'=>'nascimento', 'mask' => 'date-mask', 'value' => $pombo->nascimento])
+            <?php                
+                $dataBD = $pombo->nascimento;
+                $splitData = explode("-", $dataBD);                
+                $ano = $splitData[0];
+                $mes = $splitData[1];
+                $dia = $splitData[2];
+                $dataCompleta = $dia.'-'.$mes.'-'.$ano;
+            ?>
+            @include('components.textInput', ['label'=>'Data de Nascimento', 'name'=>'nascimento', 'mask' => 'date-mask', 'value' => $dataCompleta])
 
             <div class="form-group">
                 <label class='w-100'>
