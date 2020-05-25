@@ -69,16 +69,6 @@
 
             @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha')])
 
-            {{-- <div class="form-group">
-                <span> Pombal: </spán>
-                <select class="form-control pombo-select2" name="pombal_id">
-                    <option value="-1" disabled selected> Pesquisar ... </option>
-                    @foreach($pombais as $pombal)
-                        <option value="{{$pombal->id}}"> {{$pombal->nome}} </option>
-                    @endforeach
-                </select>
-            </div> --}}
-
             <div class="form-group">
                 <label class='w-100'>
                     <span> Observações : </spán>

@@ -59,8 +59,9 @@ class PomboController extends Controller
 
     public function edit($id)
     {
+        $pombos = Pombo::all();
         $pombo = Pombo::findOrFail($id);
-        return view('Pombo.edit', compact('pombo'));
+        return view('Pombo.edit', compact('pombo', 'pombos'));
     }
 
     public function destroy($id)
