@@ -67,7 +67,7 @@
 
             @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB')])
 
-            @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array('Pombal de Santa Luzia', 'Pombal BH', 'Pombal Contagem')])
+            @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha')])
 
             {{-- <div class="form-group">
                 <span> Pombal: </spán>
