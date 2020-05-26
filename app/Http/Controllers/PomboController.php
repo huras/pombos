@@ -70,7 +70,7 @@ class PomboController extends Controller
         $pombos = Pombo::all();
         $pombo = Pombo::findOrFail($id);
         return view('Pombo.edit', compact('pombo', 'pombos'));
-    }
+    }  
 
     public function update(Request $request, $id){
         $data = $request->all();        
@@ -120,20 +120,25 @@ class PomboController extends Controller
 
         return redirect()->back()->with('success', 'Pombo removido com sucesso!');
     }
+
+    public function profile($id)
+    {
+        $pombos = Pombo::all();
+        $pombo = Pombo::findOrFail($id);
+        return view('Pombo.profile', compact('pombo', 'pombos'));
+    }
     
     // ============================= Funcionalidades
 
     function validatePombo($request)
     {
         $rules = [
-            'foto' => 'max:2120',
-            // 'anilha' => 'required|numeric|unique:pombo',
+            'foto' => 'max:2120',            
             'nome' => 'max:200',
             'nascimento' => 'date_format:d/m/Y',
             'macho' => 'required',
             'pai_id' => 'numeric',
-            'mae_id' => 'numeric',
-            // 'cor' => 'required',
+            'mae_id' => 'numeric',            
             'pombal' => 'required',
         ];
 
@@ -142,8 +147,7 @@ class PomboController extends Controller
             'mimes' => 'Tipo de imagem inválida (use jpeg, png, jpg ou webp)',
             'max' => 'A imagem não deve ter mais do que 2 MB',
             'date_format' => 'Data inválida!',
-            'numeric' => 'Este campo deve ser numérico',
-            // 'unique' => 'Anilha já existente no banco de dados',
+            'numeric' => 'Este campo deve ser numérico',            
         ];
 
         return Validator::make($request, $rules, $messages);

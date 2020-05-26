@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/pombos', 'PomboController@index');
 Route::post('/pombo/update/{id}', 'PomboController@update');
+Route::get('/pombo/profile/{id}', 'PomboController@profile')->name('pombo.profile');
 
 Route::get('/pombais', 'PombalController@index');
 
