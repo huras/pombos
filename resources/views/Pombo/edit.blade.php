@@ -63,12 +63,12 @@
             </div>
 
             <div class="form-group">
-                <span> Mãe: </spán>
+                <span> Mae: </spán>
                 <select class="form-control pombo-select2" name="mae_id">
                     {{-- <option value="-1" disabled selected> Pesquisar ... </option> --}}
-                    @foreach($pombos as $pomboCad)
-                        @if($pomboCad->macho == '0')
-                        <option value="{{$pomboCad->mae_id}}"<?php if($pomboCad->id == $pombo->mae_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} </option>
+                    @foreach($pombos as $pomboCad)                    
+                        @if($pomboCad->macho == '0')                        
+                            <option value="{{$pomboCad->id}}"<?php if($pomboCad->id == $pombo->mae_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} </option>
                         @endif
                     @endforeach
                 </select>
