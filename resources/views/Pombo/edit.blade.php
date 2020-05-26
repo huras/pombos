@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    Novo Pombo
+    Editar Pombo
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -29,8 +29,7 @@
             
             @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'mask' => 'integer-mask', 'value' => $pombo->anilha])
             @include('components.textInput', ['label'=>'Nome', 'name'=>'nome', 'value' => $pombo->nome])
-                <?php                
-                // dd($pombo);
+                <?php                                
                     $dataBD = $pombo->nascimento;
                     $splitData = explode("-", $dataBD);                
                     $ano = $splitData[0];
@@ -52,8 +51,7 @@
 
             <div class="form-group">
                 <span> Pai: </spán>
-                <select class="form-control pombo-select2" name="pai_id">
-                    {{-- <option value="-1" disabled selected> Pesquisar ... </option> --}}
+                <select class="form-control pombo-select2" name="pai_id">                    
                     @foreach($pombos as $pomboCad)                    
                         @if($pomboCad->macho == '1')                        
                             <option value="{{$pomboCad->id}}"<?php if($pomboCad->id == $pombo->pai_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} </option>
@@ -64,8 +62,7 @@
 
             <div class="form-group">
                 <span> Mae: </spán>
-                <select class="form-control pombo-select2" name="mae_id">
-                    {{-- <option value="-1" disabled selected> Pesquisar ... </option> --}}
+                <select class="form-control pombo-select2" name="mae_id">                    
                     @foreach($pombos as $pomboCad)                    
                         @if($pomboCad->macho == '0')                        
                             <option value="{{$pomboCad->id}}"<?php if($pomboCad->id == $pombo->mae_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} </option>
