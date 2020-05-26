@@ -11,9 +11,10 @@
     <div class="alert alert-success">
       {{ session()->get('success') }}  
     </div><br />
-  @endif
-  <table class="table table-striped datatable">
-    <thead>
+  @endif  
+<button type="button" onclick="window.location.href = '{{route('pombo.create')}}'" class="btn btn-success">Cadastrar pombo</button>
+  <table class="table table-striped datatable">    
+    <thead>        
         <tr>
           <td>ID</td>
           <td>Foto</td>
@@ -61,15 +62,15 @@
             </td>
             <td>
                 <div style='display: flex;'>
-                    <a href="{{ route('pombo.profile', $item->id)}}" class="btn btn-primary"> Perfil </a>
+                    <a href="{{ route('pombo.profile', $item->id)}}" class="btn btn-outline-info"> Perfil </a>
                     <pre> </pre>
-                    <a href="{{ route('pombo.edit', $item->id)}}" class="btn btn-primary"> Editar </a>
+                    <a href="{{ route('pombo.edit', $item->id)}}" class="btn btn-outline-primary"> Editar </a>
                     <pre> </pre>
                     <form action="{{ route('pombo.destroy', $item->id)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button 
-                        class="btn btn-danger" 
+                        class="btn btn-outline-danger" 
                         type="submit" 
                         onclick='
                             if(!confirm("Deseja mesmo remover o pombo {{$item->anilha." - ".$item->nome}} do sistema?")) {
