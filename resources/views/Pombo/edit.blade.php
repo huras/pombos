@@ -18,33 +18,34 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="/pombo/{{$pombo->id}}/edit" enctype="multipart/form-data">
+    <form method="post" action='/pombo/update/{{$pombo->id}}' method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class='w-100'>
                     <span> Foto: </spán>
-                    <input type="file" class="form-control integer-mask" name="foto"/>
+                    <input type="file" class="form-control integer-mask" name="foto">
                 </label>
             </div>
             
             @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'mask' => 'integer-mask', 'value' => $pombo->anilha])
             @include('components.textInput', ['label'=>'Nome', 'name'=>'nome', 'value' => $pombo->nome])
-            <?php                
-                $dataBD = $pombo->nascimento;
-                $splitData = explode("-", $dataBD);                
-                $ano = $splitData[0];
-                $mes = $splitData[1];
-                $dia = $splitData[2];
-                $dataCompleta = $dia.'-'.$mes.'-'.$ano;
-            ?>
+                <?php                
+                // dd($pombo);
+                    $dataBD = $pombo->nascimento;
+                    $splitData = explode("-", $dataBD);                
+                    $ano = $splitData[0];
+                    $mes = $splitData[1];
+                    $dia = $splitData[2];
+                    $dataCompleta = $dia.'-'.$mes.'-'.$ano;
+                ?>
             @include('components.textInput', ['label'=>'Data de Nascimento', 'name'=>'nascimento', 'mask' => 'date-mask', 'value' => $dataCompleta])
 
             <div class="form-group">
                 <label class='w-100'>
                     <span> Sexo: </spán>
                     <select name="macho" class="form-control">
-                        <option value="1" @if($pombo->sexo == '1') selected @endif >Macho</option>
-                        <option value="0" @if($pombo->sexo == '0') selected @endif >Femea</option>                        
+                        <option value="1" @if($pombo->macho == '1') selected @endif >Macho</option>
+                        <option value="0" @if($pombo->macho == '0') selected @endif >Femea</option>                        
                     </select>
                 </label>
             </div>
@@ -52,10 +53,10 @@
             <div class="form-group">
                 <span> Pai: </spán>
                 <select class="form-control pombo-select2" name="pai_id">
-                    <option value="-1" disabled selected> Pesquisar ... </option>
-                    @foreach($pombos as $pombo)
-                        @if($pombo->macho == '1')
-                            <option value="{{$pombo->id}}"<?php if($pombo->id == $pombo->pai_id){echo("selected");}?>> {{$pombo->anilha}} - {{$pombo->nome}} </option>
+                    {{-- <option value="-1" disabled selected> Pesquisar ... </option> --}}
+                    @foreach($pombos as $pomboCad)                    
+                        @if($pomboCad->macho == '1')                        
+                            <option value="{{$pomboCad->id}}"<?php if($pomboCad->id == $pombo->pai_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} </option>
                         @endif
                     @endforeach
                 </select>
@@ -64,18 +65,18 @@
             <div class="form-group">
                 <span> Mãe: </spán>
                 <select class="form-control pombo-select2" name="mae_id">
-                    <option value="-1" disabled selected> Pesquisar ... </option>
-                    @foreach($pombos as $pombo)
-                        @if($pombo->macho == '0')
-                        <option value="{{$pombo->id}}"<?php if($pombo->id == $pombo->mae_id){echo("selected");}?>> {{$pombo->anilha}} - {{$pombo->nome}} </option>
+                    {{-- <option value="-1" disabled selected> Pesquisar ... </option> --}}
+                    @foreach($pombos as $pomboCad)
+                        @if($pomboCad->macho == '0')
+                        <option value="{{$pomboCad->mae_id}}"<?php if($pomboCad->id == $pombo->mae_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} </option>
                         @endif
                     @endforeach
                 </select>
             </div>
 
-            @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB'), 'value' => $pombo->cor])
+            @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB'), 'valueCad' => $pombo->cor])
 
-            @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha'), 'value' => $pombo->pombal])
+            @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha'), 'valueCad' => $pombo->pombal])
 
             <div class="form-group">
                 <label class='w-100'>
