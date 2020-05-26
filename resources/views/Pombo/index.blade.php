@@ -61,6 +61,8 @@
             </td>
             <td>
                 <div style='display: flex;'>
+                    <a href="{{ route('pombo.profile', $item->id)}}" class="btn btn-primary"> Perfil </a>
+                    <pre> </pre>
                     <a href="{{ route('pombo.edit', $item->id)}}" class="btn btn-primary"> Editar </a>
                     <pre> </pre>
                     <form action="{{ route('pombo.destroy', $item->id)}}" method="post">
