@@ -26,6 +26,7 @@ class PomboController extends Controller
     public function store(Request $request)
     {
         $val = $this->validatePombo($request->all());
+        $valAnilha = $this->validateAnilha($request->all());
 
         //verificar se teve algum erro na validação, se sim, retorna pra pagina
         if ($val->fails()) {
@@ -34,6 +35,13 @@ class PomboController extends Controller
                     ->withErrors($val);
         }
         
+        //Validaçao da anilha separada, para não atrapalhar a page de edição.
+        if ($valAnilha->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($valAnilha);
+        }
+
         $data = $request->all();
 
         // Set date format
@@ -64,6 +72,39 @@ class PomboController extends Controller
         return view('Pombo.edit', compact('pombo', 'pombos'));
     }
 
+    public function update(Request $request, $id){
+        $data = $request->all();        
+        $val = $this->validatePombo($request->all());
+
+        //verificar se teve algum erro na validação, se sim, retorna pra pagina
+        if ($val->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($val);
+        }
+        
+        $pombo = Pombo::find($id);
+        // Set date format
+        $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
+
+        //upload de foto
+        $cover = $request->file('foto');        
+        if ($cover) {
+            $novo_nome_imagem = rand(). '.' .$cover->getClientOriginalExtension();
+            //move a iamgem para o diretorio correcto
+            $cover->move(public_path("img/pombo/"), $novo_nome_imagem);
+            //salva a imagem na ram e dá o resize
+            $imgcrop = Image::make(public_path("img/pombo/".$novo_nome_imagem))->resize(250,250);
+            //salva a imagem cropada na pasta com o mesmo nome da original substituindo
+            $imgcrop->save(public_path("img/pombo/".$novo_nome_imagem));
+            $data['foto'] = $novo_nome_imagem;
+        }
+
+        $pombo->update($data);
+
+        return redirect('/pombos')->with('success', 'Editado com sucesso!');
+    }
+
     public function destroy($id)
     {
         $pombo = Pombo::findOrFail($id);
@@ -86,7 +127,7 @@ class PomboController extends Controller
     {
         $rules = [
             'foto' => 'max:2120',
-            'anilha' => 'required|numeric|unique:pombo',
+            // 'anilha' => 'required|numeric|unique:pombo',
             'nome' => 'max:200',
             'nascimento' => 'date_format:d/m/Y',
             'macho' => 'required',
@@ -102,6 +143,19 @@ class PomboController extends Controller
             'max' => 'A imagem não deve ter mais do que 2 MB',
             'date_format' => 'Data inválida!',
             'numeric' => 'Este campo deve ser numérico',
+            // 'unique' => 'Anilha já existente no banco de dados',
+        ];
+
+        return Validator::make($request, $rules, $messages);
+    }
+
+    function validateAnilha($request)
+    {
+        $rules = [
+            'anilha' => 'required|numeric|unique:pombo',
+        ];
+
+        $messages = [
             'unique' => 'Anilha já existente no banco de dados',
         ];
 
