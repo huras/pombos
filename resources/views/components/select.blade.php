@@ -13,7 +13,7 @@
             <option value="{{ (old($name)) ? old($name) : (isset($value) ? $value : 'Pesquisar ...') }}" disabled selected> {{ (old($name)) ? old($name) : (isset($value) ? $value : 'Pesquisar ...') }} </option>
             
             @foreach ($values as $value)
-                <option value='{{$value}}'> {{$value}} </option>;
+                <option value='{{$value}}' {{($value == $valueCad) ? 'selected' : $value }}> {{$value}} </option>;
             @endforeach
         </select>
     </label>
