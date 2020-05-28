@@ -22,6 +22,7 @@
           <td>Nome</td>
           <td>Sexo</td>
           <td>Data de Nascimento</td>
+          <td>Pombal</td>
           <td>Cor</td>
           <td>Pai</td>
           <td>Mãe</td>
@@ -52,6 +53,7 @@
                 <span style='font-size: 0px;'>{{$item->nascimento}}</span> 
                 <span>{{date("d/m/Y", strtotime($item->nascimento))}}</span>
             </td>
+            <td>{{$item->pombal}}</td>
             <td>{{$item->cor}}</td>
             <td> 
                 @if($item->pai_id != 0)
