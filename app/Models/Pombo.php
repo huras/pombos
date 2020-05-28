@@ -17,8 +17,8 @@ class Pombo extends Model
         'pai_id', 
         'mae_id', 
         'cor', 
-        'pombal'
-        // 'pombal_id'
+        'pombal',
+        'morto'
     ];
 
     public function pai()

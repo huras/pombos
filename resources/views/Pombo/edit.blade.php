@@ -54,7 +54,7 @@
                 <select class="form-control pombo-select2" name="pai_id">                    
                     @foreach($pombos as $pomboCad)                    
                         @if($pomboCad->macho == '1')                        
-                            <option value="{{$pomboCad->id}}"<?php if($pomboCad->id == $pombo->pai_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} </option>
+                            <option value="{{$pomboCad->id}}"<?php if($pomboCad->id == $pombo->pai_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} {{$pomboCad->morto == 1 ? '(morto)' :  ''}} </option>
                         @endif
                     @endforeach
                 </select>
@@ -65,7 +65,7 @@
                 <select class="form-control pombo-select2" name="mae_id">                    
                     @foreach($pombos as $pomboCad)                    
                         @if($pomboCad->macho == '0')                        
-                            <option value="{{$pomboCad->id}}"<?php if($pomboCad->id == $pombo->mae_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} </option>
+                            <option value="{{$pomboCad->id}}"<?php if($pomboCad->id == $pombo->mae_id){echo("selected");}?>> {{$pomboCad->anilha}} - {{$pomboCad->nome}} {{$pomboCad->morto == 1 ? '(morto)' :  ''}} </option>
                         @endif
                     @endforeach
                 </select>
@@ -73,7 +73,17 @@
 
             @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB'), 'valueCad' => $pombo->cor])
 
-            @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha'), 'valueCad' => $pombo->pombal])
+            @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha'), 'valueCad' => $pombo->pombal]) 
+
+            <div class="form-group">
+                <label class='w-100'>
+                    {{-- <span> Morto </spán> --}}
+                    <select name="morto" class="form-control">
+                        <option value="0" @if($pombo->morto == '0') selected @endif >Vivo</option>                        
+                        <option value="1" @if($pombo->morto == '1') selected @endif >Morto</option>                        
+                    </select>
+                </label>
+            </div>
 
             <div class="form-group">
                 <label class='w-100'>

@@ -47,7 +47,7 @@
                     <option value="-1" disabled selected> Pesquisar ... </option>
                     @foreach($pombos as $pombo)
                         @if($pombo->macho == '1')
-                            <option value="{{$pombo->id}}"> {{$pombo->anilha}} - {{$pombo->nome}} </option>
+                            <option value="{{$pombo->id}}"> {{$pombo->anilha}} - {{$pombo->nome}} {{$pombo->morto == 1 ? '(morto)' :  ''}} </option>
                         @endif
                     @endforeach
                 </select>
@@ -59,7 +59,7 @@
                     <option value="-1" disabled selected> Pesquisar ... </option>
                     @foreach($pombos as $pombo)
                         @if($pombo->macho == '0')
-                            <option value="{{$pombo->id}}"> {{$pombo->anilha}} - {{$pombo->nome}} </option>
+                            <option value="{{$pombo->id}}"> {{$pombo->anilha}} - {{$pombo->nome}} {{$pombo->morto == 1 ? '(morto)' :  ''}} </option>
                         @endif
                     @endforeach
                 </select>
@@ -68,6 +68,15 @@
             @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB')])
 
             @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha')])
+
+            <div class="form-group">
+                <label class='w-100'>                    
+                    <select name="morto" class="form-control">
+                        <option value="0" selected>Vivo</option>                        
+                        <option value="1" >Morto</option>                        
+                    </select>
+                </label>
+            </div>
 
             <div class="form-group">
                 <label class='w-100'>
