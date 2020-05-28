@@ -19,7 +19,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-
                     <div class="card-body">
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
@@ -31,7 +30,7 @@
                                     </div>
                                 </div>
                                 <div class="userData ml-3">
-                                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">{{$pombo->nome}}</a></h2>
+                                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">{{$pombo->nome}} {!!$pombo->morto == 1 ? '<?xml version="1.0" encoding="iso-8859-1"?><svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166			h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!}</a></h2>
                                 <h6 class="d-block"><a href="javascript:void(0)">Anilha: </a>{{$pombo->anilha}}</h6>
                                     <h6 class="d-block"><a href="javascript:void(0)">Pombal: </a>{{$pombo->pombal}}</h6>
                                 <h6 class="d-block"><a href="javascript:void(0)">Idade: </a>{{$interval->y}} anos</h6>
@@ -45,10 +44,10 @@
                         <div class="row">
                             <div class="col-12">
                                 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                    <li class="nav-item">
+                                    <li class="nav-pombo">
                                         <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Informações básicas</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-pombo">
                                         <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Árvore genealógica</a>
                                     </li>
                                 </ul>
@@ -60,7 +59,7 @@
                                                 <label style="font-weight:bold;">Nome: </label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                {{$pombo->nome}}
+                                                {{$pombo->nome}} {!!$pombo->morto == 1 ? '<?xml version="1.0" encoding="iso-8859-1"?><svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166			h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!}
                                             </div>
                                         </div>
                                         <hr />
@@ -97,7 +96,11 @@
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 @foreach($pombos as $pomboCad)                                                    
-                                                    <?php if($pomboCad->id == $pombo->pai_id){echo(''.$pomboCad->anilha. ' - ' .$pomboCad->nome);}?>
+                                                    <td> 
+                                                        @if($pomboCad->pai_id == $pomboCad->id)
+                                                            <a href="{{ route('pombo.profile', $pomboCad->pai->id)}}" class=""> {!!$pomboCad->pai->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g><g><path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!} {{$pomboCad->pai->anilha}} {{$pomboCad->pai->nome}} </a> 
+                                                        @endif
+                                                    </td>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -108,7 +111,11 @@
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 @foreach($pombos as $pomboCad)                                                    
-                                                    <?php if($pomboCad->id == $pombo->mae_id){echo(''.$pomboCad->anilha. ' - ' .$pomboCad->nome);}?>
+                                                    <td> 
+                                                        @if($pomboCad->mae_id == $pomboCad->id)
+                                                            <a href="{{ route('pombo.profile', $pomboCad->mae->id)}}" class=""> {!!$pomboCad->mae->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g><g><path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!} {{$pomboCad->mae->anilha}} {{$pomboCad->mae->nome}} </a> 
+                                                        @endif
+                                                    </td>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -132,8 +139,7 @@
                                         </div>
                                         <hr />
                                     </div>
-                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
-                                        Facebook, Google, Twitter Account that are connected to this account
+                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">                                        
                                     </div>
                                 </div>
                             </div>
@@ -142,6 +148,8 @@
                 </div>
             </div>
         </div>
+        <a href="{{ route('pombo.edit', $pombo->id)}}" class="btn btn-outline-primary"> Editar </a>        
+        <a class="btn btn-danger" href='/pombos'> Cancelar </a>
     </div>
 
     <style>
