@@ -60,6 +60,8 @@ class PomboController extends Controller
             $data['foto'] = $novo_nome_imagem;
         }
 
+        // dd($request->all());
+
         $pombo = Pombo::create($data);
 
         return redirect('/pombos')->with('success', 'Novo pombo salvo com sucesso!');
@@ -157,7 +159,7 @@ class PomboController extends Controller
     function validateAnilha($request)
     {
         $rules = [
-            'anilha' => 'required|numeric|unique:pombo',
+            'anilha' => 'required|unique:pombo',
         ];
 
         $messages = [

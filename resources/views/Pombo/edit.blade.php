@@ -27,7 +27,7 @@
                 </label>
             </div>
             
-            @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'mask' => 'integer-mask', 'value' => $pombo->anilha])
+            @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'value' => $pombo->anilha])
             @include('components.textInput', ['label'=>'Nome', 'name'=>'nome', 'value' => $pombo->nome])
                 <?php                                
                     $dataBD = $pombo->nascimento;

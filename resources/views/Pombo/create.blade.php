@@ -27,7 +27,7 @@
                 </label>
             </div>
             
-            @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'mask' => 'integer-mask'])
+            @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha'])
             @include('components.textInput', ['label'=>'Nome', 'name'=>'nome'])
             @include('components.textInput', ['label'=>'Data de Nascimento', 'name'=>'nascimento', 'mask' => 'date-mask'])
 
