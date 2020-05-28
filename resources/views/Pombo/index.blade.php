@@ -71,6 +71,7 @@
                     <pre> </pre>
                     <a href="{{ route('pombo.edit', $item->id)}}" class="btn btn-outline-primary"> Editar </a>
                     <pre> </pre>
+
                     {{-- <form action="{{ route('pombo.destroy', $item->id)}}" method="post">
                     @csrf
                     @method('DELETE')
@@ -83,6 +84,7 @@
                             }
                         '> Deletar </button>
                     </form> --}}
+
                 </div>
             </td>
         </tr>

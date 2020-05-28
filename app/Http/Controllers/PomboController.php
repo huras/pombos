@@ -112,17 +112,23 @@ class PomboController extends Controller
 
         return redirect('/pombos')->with('success', 'Editado com sucesso!');
     }
-//seta o pombo como morto pelo botao no index
+
     public function destroy($id)
     {
-        $pombo = Pombo::findOrFail($id);
+    $pombo = Pombo::findOrFail($id);
 
-        $pombo->morto = 1;
+        // Remove a imagem do pombo
+        if($pombo->foto){
+            $filepath = public_path('/img/pombo/'.$pombo->foto);
+            if(file_exists($filepath))
+                unlink($filepath);
+        }
 
-        $pombo->update();
+        $pombo->delete();        
 
-        return redirect()->back()->with('success', 'Pombo editado como morto :(');
+        return redirect()->back()->with('success', 'Pombo removido com sucesso!');
     }
+
 
     public function profile($id)
     {
@@ -176,3 +182,6 @@ class PomboController extends Controller
         return $ano."-".$mes."-".$dia;
     }
 }
+
+
+ 
