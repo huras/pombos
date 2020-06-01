@@ -25,7 +25,7 @@
 
             <div class="form-group">
                 <label class='w-100'>
-                    <span> Nome: </spán>
+                    <span> Nome: </span>
                     <input type="text" class="form-control" name="nome"/>
                 </label>
             </div>            

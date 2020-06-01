@@ -1,7 +1,7 @@
 
 <div class="form-group">
     <label class='w-100'>
-        <span> {{$label}}{{ (isset($required)) ? "* " : "" }} : </spán>
+        <span> {{$label}}{{ (isset($required)) ? "* " : "" }} : </span>
         <input 
             type="{{ (isset($type)) ? $type : "text" }}"
             class="form-control {{ (!isset($mask) ? "" : $mask) }}"

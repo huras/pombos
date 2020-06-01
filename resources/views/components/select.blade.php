@@ -1,3 +1,9 @@
+<?php
+    if(!isset($valueCad)){
+        $valueCad = old($name);
+    }
+?>
+
 <div class="form-group">
     <label class='w-100'>
         <span> {{$label}}{{ (isset($required)) ? "* " : "" }} : </span>
