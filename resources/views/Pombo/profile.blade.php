@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('content')
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -68,7 +72,10 @@
                                                 <label style="font-weight:bold;">Data de nascimento</label>
                                             </div>
                                             <div class="col-md-8 col-6">                                                
-                                                <?php echo strftime('%A, %d de %B de %Y', strtotime($pombo->nascimento));?>
+                                                <?php
+                                                    $diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];                                                    
+                                                    echo $diasSemana[strftime('%w', strtotime($pombo->nascimento))];
+                                                    echo strftime(', %d de %B de %Y', strtotime($pombo->nascimento));?>
                                             </div>
                                         </div>
                                         <hr />                                        
@@ -233,4 +240,4 @@
         });
     </script>
 
-    
+@endsection
