@@ -149,6 +149,7 @@
             </div>
         </div>
         <a href="{{ route('pombo.edit', $pombo->id)}}" class="btn btn-outline-primary"> Editar </a>        
+        <a href="{{ route('pombo.pdf', $pombo->id)}}" class="btn btn-outline-primary"> PDF </a>        
         <a class="btn btn-danger" href='/pombos'> Cancelar </a>
     </div>
 

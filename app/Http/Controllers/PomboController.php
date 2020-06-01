@@ -7,6 +7,7 @@ use App\Models\Pombo;
 use App\Models\Pombal;
 use Validator;
 use Intervention\Image\ImageManagerStatic as Image;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class PomboController extends Controller
 {
@@ -180,6 +181,17 @@ class PomboController extends Controller
         $mes= substr($dateSql, 3,-5);
         $dia= substr($dateSql, 0,-8);
         return $ano."-".$mes."-".$dia;
+    }
+
+    public function geraPdf($id){
+
+        $pombos = Pombo::all();
+        $pombo = Pombo::findOrFail($id);
+
+        $pdf = PDF::loadView('testepdf', compact('pombo','pombos'));
+
+        return $pdf->setPaper('a4')->stream('Perfil do pombo');
+
     }
 }
 
