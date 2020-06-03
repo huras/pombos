@@ -17,6 +17,7 @@
     <thead>        
         <tr>
           <td>ID</td>
+          <td style="display: none">Morto?</td>
           <td>Foto</td>
           <td>Anilha</td>
           <td>Nome</td>
@@ -32,14 +33,15 @@
     <tbody>
         @foreach($pombos as $item)
         <tr {{$item->morto == 1 ? 'style=background-color:rgb(255,221,221)' : '' }} >
-            <td>{{$item->id}}</td>
+          <td>{{$item->id}}</td>
+          <td style="display: none">{{$item->morto == 1 ? 'Morto' : 'Vivo'}}</td>            
             <td>
                 @if($item->foto)
                     <img style='max-width: 50px; border-radius: 50%;' src='/public/img/pombo/{{$item->foto}}'>
                     @else
                     <img style='max-width: 50px; border-radius: 50%;' src='https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'>                    
                 @endif
-            </td>
+            </td>            
             <td>{{$item->anilha}}</td>
             <td>            
             {{$item->nome}}
