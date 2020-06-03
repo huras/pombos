@@ -36,6 +36,8 @@
             <td>
                 @if($item->foto)
                     <img style='max-width: 50px; border-radius: 50%;' src='/public/img/pombo/{{$item->foto}}'>
+                    @else
+                    <img style='max-width: 50px; border-radius: 50%;' src='https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'>                    
                 @endif
             </td>
             <td>{{$item->anilha}}</td>

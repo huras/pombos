@@ -30,7 +30,7 @@
 
 <div class="userData ml-3" style="display: flex; flex-direction: row; margin-bottom: 25px;">
     <h6 class="d-block" style="font-size: 20px; font-weight: bold;">
-        <label class="spacepdf" for="">Anilha: </label>
+        <label class="" for="">Anilha: </label>
         <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->anilha}}</label>
         <label class="spacepdf" for="">Nome: </label>
         <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->nome}} {!!$pombo->morto == 1 ? '(morto)' :  ''!!}</label>
@@ -80,8 +80,8 @@
 <hr />
 
 <div class="">
-    <label style="font-weight:bold;">Observação: </label>
-    <textarea name="" id="" cols="30" rows="10" style="border: none; background: transparent;"> {{$pombo->obs}} </textarea>    
+    <label style="font-weight:bold;">Observações: </label>
+    <textarea name="" id="" cols="30" rows="10" style="border: none; background: transparent;"> {{$pombo->obs}} <p></textarea>    
 </div>
 {{-- <hr /> --}}
 
