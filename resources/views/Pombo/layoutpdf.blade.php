@@ -74,16 +74,18 @@
 <hr />
 
 <div class="">
-    <label style="font-weight:bold;">Observação: </label>
-    <label class="" for="">{{$pombo->obs}}</label>
-</div>
-<hr />
-
-<div class="">
     <label style="font-weight:bold;">Árvore genealógica: </label>
     <label class="" for="">Ainda não tem.</label>
 </div>
 <hr />
+
+<div class="">
+    <label style="font-weight:bold;">Observação: </label>
+    <textarea name="" id="" cols="30" rows="10" style="border: none; background: transparent;"> {{$pombo->obs}} </textarea>    
+</div>
+{{-- <hr /> --}}
+
+
 
 </html>
 {{-- doc do dompdf, sobre compatibilidade de css --}}
