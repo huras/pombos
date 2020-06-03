@@ -84,7 +84,7 @@
                                                 <label style="font-weight:bold;">Sexo: </label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                {{($pombo->macho == '1') ? 'Macho' : 'Feminino' }}
+                                                {{($pombo->macho == '1') ? 'Macho' : 'Fêmea' }}
                                             </div>
                                         </div>
                                         <hr />
