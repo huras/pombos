@@ -24,8 +24,9 @@
     }
 </style>
 
-<div class="image-container" style="margin-left: 120px; display: flex; justify-content: center;">    
-    <img src="{{ (isset($pombo->foto)) ? public_path('/img/pombo/'.$pombo->foto) : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'}}" id="imgProfile" style="width: 450px; height: 450px;  margin-top: 15px;" class="img-thumbnail" />                                     
+<body style="background-color: transparent;">
+<div class="image-container" style="margin-left: 172px; display: flex; justify-content: center;">    
+    <img src="{{ (isset($pombo->foto)) ? public_path('/img/pombo/'.$pombo->foto) : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'}}" id="imgProfile" style="width: 320px; height: 240px;  margin-top: 15px;" class="img-thumbnail" />                                     
 </div>
 
 <div class="userData ml-3" style="display: flex; flex-direction: row; margin-bottom: 25px;">
@@ -42,40 +43,44 @@
 <div class="">
     <label style="font-weight:bold;">Data de nascimento: </label>
     <label for=""><?php echo strftime('%A, %d de %B de %Y', strtotime($pombo->nascimento));?></label>
-    <label class="spacepdf2" style="font-weight:bold;">Pai: 
-        @foreach($pombos as $pomboCad)
-            @if($pomboCad->pai_id == $pomboCad->id)
-            <a style="font-weight: normal;"> {{$pomboCad->pai->anilha}} - {{$pomboCad->pai->nome}} {!!$pomboCad->pai->morto == 1 ? '(morto)' :  ''!!}</a>
-            @endif
-        @endforeach    
-    </label>
+
+    <label class="spacepdf2" style="font-weight:bold;">Cor: <a style="text-decoration: none;font-weight:normal; color: black;">{{$pombo->cor}}</a></label> 
 </div>
 <hr />
 
 <div class="">
         <label style="font-weight:bold;">Sexo: </label>
-        <label for="">{{($pombo->macho == '1') ? 'Macho' : 'Feminino' }}</label>        
-        <label class="spacepdf2" style="font-weight:bold;">Mãe:         
+        <label for="">{{($pombo->macho == '1') ? 'Macho' : 'Feminino' }}</label>     
+        
+        <label class="spacepdf2" style="font-weight:bold;">Pai: 
             @foreach($pombos as $pomboCad)
-                @if($pomboCad->mae_id == $pomboCad->id)
-                <a style="font-weight: normal;"> {{$pomboCad->mae->anilha}} - {{$pomboCad->mae->nome}}  {!!$pomboCad->mae->morto == 1 ? '(morto)' :  ''!!}</a>
+                @if($pomboCad->pai_id == $pomboCad->id)
+                <a style="font-weight: normal;"> {{$pomboCad->pai->anilha}} - {{$pomboCad->pai->nome}} {!!$pomboCad->pai->morto == 1 ? '(morto)' :  ''!!}</a>
                 @endif
-            @endforeach
-        </label>
+            @endforeach    
+        </label>  
     </div>
 </div>
 <hr />
 
 <div class="">
-    <label style="font-weight:bold; color: black !important;">Idade: <a style="font-weight: normal;">{{$interval->y}} anos</a></label>    
-    
-    <label class="spacepdf2" style="font-weight:bold;">Cor: {{$pombo->cor}}</label>        
+    <label style="font-weight:bold; color: black !important;">Idade: <a style="font-weight: normal;">{{$interval->y}} anos</a></label>        
+      
+    <label class="spacepdf2" style="font-weight:bold;">Mãe:         
+        @foreach($pombos as $pomboCad)
+            @if($pomboCad->mae_id == $pomboCad->id)
+            <a style="font-weight: normal;"> {{$pomboCad->mae->anilha}} - {{$pomboCad->mae->nome}}  {!!$pomboCad->mae->morto == 1 ? '(morto)' :  ''!!}</a>
+            @endif
+        @endforeach
+    </label>
 </div>
 <hr />
 
 <div class="">
     <label style="font-weight:bold;">Árvore genealógica: </label>
-    <label class="" for="">Ainda não tem.</label>
+    <div id='gene-div' style='height: 625px; width: 100vw; overflow-x: auto; overflow-y: hidden;'>
+        @include('components.genealogic-tree', ['pombo' => $pombo])
+    </div>
 </div>
 <hr />
 
@@ -83,10 +88,7 @@
     <label style="font-weight:bold;">Observações: </label>
     <textarea name="" id="" cols="30" rows="10" style="border: none; background: transparent;"> {{$pombo->obs}} <p></textarea>    
 </div>
-{{-- <hr /> --}}
-
-
-
+</body>
 </html>
 {{-- doc do dompdf, sobre compatibilidade de css --}}
 {{-- https://github.com/dompdf/dompdf/wiki/CSSCompatibility --}}
