@@ -18,6 +18,10 @@
     $now = new DateTime();                                
     $interval = $now->diff($date);                                    
 ?>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
 <div class="container">
         <div class="row">
@@ -27,7 +31,7 @@
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
                                 <div class="image-container">
-                                    <img src=" {{ (isset($pombo->foto) ? '/public/img/pombo/'.$pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />                                    
+                                    <img src=" {{ (isset($pombo->foto) ? '/img/pombo/'.$pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />                                    
                                     <div class="middle">
                                         <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
                                         <input type="file" style="display: none;" id="profilePicture" name="file" />
@@ -47,16 +51,16 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                    <li class="nav-pombo">
-                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Informações básicas</a>
+                                <ul class="nav nav-tabs mb-4"  >
+                                    <li class="nav-pombo" onclick="setTimeout(() => { document.getElementById('basicInfo').style.display = 'block'; document.getElementById('aba2').style.display = 'none';}, 50);">
+                                        <a class="nav-link " id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Informações básicas</a>
                                     </li>
-                                    <li class="nav-pombo">
+                                    <li class="nav-pombo" onclick="setTimeout(() => { document.getElementById('basicInfo').style.display = 'none'; document.getElementById('aba2').style.display = 'block';}, 50);" >
                                         <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Árvore genealógica</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content ml-1" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">                                      
+                                    <div class="tab-pane fade  " id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">                                      
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
@@ -146,7 +150,10 @@
                                         </div>
                                         <hr />
                                     </div>
-                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">                                        
+                                    <div class="tab-pane fade" id="aba2" role="tabpanel" aria-labelledby="ConnectedServices-tab">  
+                                        <div style="display: flex; width: 100%; height: 100%;">
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -159,6 +166,14 @@
         <a href="{{ route('pombo.pdf', $pombo->id)}}" class="btn btn-outline-primary"> PDF </a>        
         <a class="btn btn-danger" href='/pombos'> Cancelar </a>
     </div>
+
+    @include('components.genealogic-tree', ['pombo' => $pombo])
+    <script>
+        document.getElementById('connectedServices-tab').click();
+        // window.addEventListener('load', () => {
+        // });
+    </script>
+
 
     <style>
         body{

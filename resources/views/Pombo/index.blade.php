@@ -16,7 +16,7 @@
   <table class="table table-striped datatable">    
     <thead>        
         <tr>
-          <td>ID</td>
+          {{-- <td>ID</td> --}}
           <td>Foto</td>
           <td>Anilha</td>
           <td>Nome</td>
@@ -32,10 +32,10 @@
     <tbody>
         @foreach($pombos as $item)
         <tr {{$item->morto == 1 ? 'style=background-color:rgb(255,221,221)' : '' }} >
-            <td>{{$item->id}}</td>
+            {{-- <td>{{$item->id}}</td> --}}
             <td>
                 @if($item->foto)
-                    <img style='max-width: 50px; border-radius: 50%;' src='/public/img/pombo/{{$item->foto}}'>
+                    <img style='max-width: 50px; border-radius: 50%;' src='/img/pombo/{{$item->foto}}'>
                 @endif
             </td>
             <td>{{$item->anilha}}</td>
