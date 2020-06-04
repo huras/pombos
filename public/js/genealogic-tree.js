@@ -131,13 +131,25 @@ class GenealogicTree {
   };
 
   renderPombo(x, y, pombo, scale = 1, currentDepth = 0, maxDepth = 0) {
-    const progressionScale = 0.5;
     let pomboRect = {
       x: x - (pombo.canvasImage.width / 2) * scale,
       y: y - (pombo.canvasImage.height / 2) * scale,
       w: pombo.canvasImage.width * scale,
       h: pombo.canvasImage.height * scale,
     };
+
+    if (currentDepth == 0) {
+      this.ctx.save();
+      this.ctx.beginPath();
+      this.ctx.moveTo(pomboRect.x + pomboRect.w / 2, this.canvas.height);
+      this.ctx.lineWidth = 100;
+      this.ctx.lineTo(
+        pomboRect.x + pomboRect.w / 2,
+        pomboRect.y + pomboRect.h / 2
+      );
+      this.ctx.stroke();
+      this.ctx.restore();
+    }
 
     scale *= 0.8;
     const xOffsetRatio = 9 / (9 + currentDepth * 5);
@@ -158,7 +170,9 @@ class GenealogicTree {
             pomboRect.x + pomboRect.w / 2,
             pomboRect.y + pomboRect.h / 2
           );
-          this.ctx.lineTo(paiRect.x, paiRect.y + paiRect.w / 2);
+          this.ctx.lineWidth =
+            25 + (20 - 20 * (currentDepth + 2 / maxDepth / 1));
+          this.ctx.lineTo(paiRect.x, paiRect.y);
           this.ctx.stroke();
           this.ctx.restore();
 
@@ -187,7 +201,9 @@ class GenealogicTree {
             pomboRect.x + pomboRect.w / 2,
             pomboRect.y + pomboRect.h / 2
           );
-          this.ctx.lineTo(maeRect.x, maeRect.y + maeRect.w / 2);
+          this.ctx.lineWidth =
+            25 + (20 - 20 * (currentDepth + 2 / maxDepth / 1));
+          this.ctx.lineTo(maeRect.x, maeRect.y);
           this.ctx.stroke();
           this.ctx.restore();
 
@@ -203,6 +219,21 @@ class GenealogicTree {
       }
     }
 
+    this.ctx.save();
+    this.ctx.beginPath();
+    this.ctx.arc(
+      pomboRect.x + pomboRect.w / 2,
+      pomboRect.y + pomboRect.h / 2,
+      pomboRect.w * 0.5 < pomboRect.h * 0.5
+        ? pomboRect.w * 0.5
+        : pomboRect.h * 0.5,
+      0,
+      Math.PI * 2,
+      true
+    );
+    this.ctx.closePath();
+    this.ctx.clip();
+
     this.ctx.drawImage(
       pombo.canvasImage,
       0,
@@ -214,6 +245,23 @@ class GenealogicTree {
       pomboRect.w,
       pomboRect.h
     );
+
+    this.ctx.beginPath();
+    this.ctx.arc(
+      pomboRect.x + pomboRect.w / 2,
+      pomboRect.y + pomboRect.h / 2,
+      pomboRect.w * 0.5 < pomboRect.h * 0.5
+        ? pomboRect.w * 0.5
+        : pomboRect.h * 0.5,
+      0,
+      Math.PI * 2,
+      true
+    );
+    this.ctx.clip();
+    this.ctx.lineWidth = 3;
+    this.ctx.stroke();
+    this.ctx.closePath();
+    this.ctx.restore();
   }
 
   render() {
