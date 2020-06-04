@@ -186,11 +186,10 @@ class PomboController extends Controller
     public function geraPdf($id){
 
         $pombos = Pombo::all();
-        $pombo = Pombo::findOrFail($id);
+        $pombo = Pombo::findOrFail($id);        
 
-        $pdf = PDF::loadView('testepdf', compact('pombo','pombos'));
-
-        return $pdf->setPaper('a4')->stream('Perfil do pombo');
+        $pdf = PDF::loadView('Pombo.layoutpdf', compact('pombo','pombos'));
+        return $pdf->setPaper('a4')->stream(''.$pombo->anilha.'-'.$pombo->nome.'_Perfil.pdf');
 
     }
 }
