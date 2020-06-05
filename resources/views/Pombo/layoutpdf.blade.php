@@ -25,8 +25,8 @@
 </style>
 
 <body style="background-color: transparent;">
-<div class="image-container" style="margin-left: 229px; display: flex; justify-content: center;">    
-    <img src="{{ (isset($pombo->foto)) ? $pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'}}" id="imgProfile" style="width: 240px; height: 320px;  margin-top: 15px;" class="img-thumbnail" />                                     
+<div class="image-container" style="margin-left: 172px; display: flex; justify-content: center;">    
+    <img src="{{ (isset($pombo->foto)) ? $pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'}}" id="imgProfile" style="width: 320px; height: 240px;  margin-top: 15px;" class="img-thumbnail" />                                     
 </div>
 
 <div class="userData ml-3" style="display: flex; flex-direction: row; margin-bottom: 25px;">
