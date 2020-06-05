@@ -78,37 +78,37 @@ class GenealogicTree {
     // Carrega as imagens
     pombo.canvasImage = sheetLoader.queueSheet(
       pombo.foto
-        ? "/img/pombo/" + pombo.foto
+        ? "" + pombo.foto
         : "https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg"
     );
     pombo.pai.canvasImage = sheetLoader.queueSheet(
       pombo.pai.foto
-        ? "/img/pombo/" + pombo.pai.foto
+        ? "" + pombo.pai.foto
         : "https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg"
     );
     pombo.mae.canvasImage = sheetLoader.queueSheet(
       pombo.mae.foto
-        ? "/img/pombo/" + pombo.mae.foto
+        ? "" + pombo.mae.foto
         : "https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg"
     );
     pombo.pai.pai.canvasImage = sheetLoader.queueSheet(
       pombo.pai.pai.foto
-        ? "/img/pombo/" + pombo.pai.pai.foto
+        ? "" + pombo.pai.pai.foto
         : "https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg"
     );
     pombo.pai.mae.canvasImage = sheetLoader.queueSheet(
       pombo.pai.mae.foto
-        ? "/img/pombo/" + pombo.pai.mae.foto
+        ? "" + pombo.pai.mae.foto
         : "https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg"
     );
     pombo.mae.pai.canvasImage = sheetLoader.queueSheet(
       pombo.mae.pai.foto
-        ? "/img/pombo/" + pombo.mae.pai.foto
+        ? "" + pombo.mae.pai.foto
         : "https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg"
     );
     pombo.mae.mae.canvasImage = sheetLoader.queueSheet(
       pombo.mae.mae.foto
-        ? "/img/pombo/" + pombo.mae.mae.foto
+        ? "" + pombo.mae.mae.foto
         : "https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg"
     );
     sheetLoader.loadSheetQueue(() => {
