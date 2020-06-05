@@ -67,6 +67,13 @@ class PomboController extends Controller
             $data['foto'] = $base64;
         }        
 
+        if(!$request->pai){
+            $data['pai'] = 0;
+        }
+        if(!$request->mae){
+            $data['mae'] = 0;
+        }
+
         $pombo = Pombo::create($data);
 
         return redirect('/pombos')->with('success', 'Novo pombo salvo com sucesso!');
@@ -110,7 +117,7 @@ class PomboController extends Controller
             // grava a imagem convertida em base
             $data['foto'] = $base64;
         }
-                
+
         if ($data['morto'] == 1){
             $pombo->morto = 1;
         } else {
