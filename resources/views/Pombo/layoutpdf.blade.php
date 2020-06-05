@@ -54,8 +54,8 @@
         
         <label class="spacepdf2" style="font-weight:bold;">Pai: 
             @foreach($pombos as $pomboCad)
-                @if($pomboCad->pai_id == $pomboCad->id)
-                <a style="font-weight: normal;"> {{$pomboCad->pai->anilha}} - {{$pomboCad->pai->nome}} {!!$pomboCad->pai->morto == 1 ? '(morto)' :  ''!!}</a>
+                @if($pombo->pai_id == $pomboCad->id)
+                <a style="font-weight: normal;"> {{$pombo->pai->anilha}} - {{$pombo->pai->nome}} {!!$pombo->pai->morto == 1 ? '(morto)' :  ''!!}</a>
                 @endif
             @endforeach    
         </label>  
@@ -68,8 +68,8 @@
       
     <label class="spacepdf2" style="font-weight:bold;">Mãe:         
         @foreach($pombos as $pomboCad)
-            @if($pomboCad->mae_id == $pomboCad->id)
-            <a style="font-weight: normal;"> {{$pomboCad->mae->anilha}} - {{$pomboCad->mae->nome}}  {!!$pomboCad->mae->morto == 1 ? '(morto)' :  ''!!}</a>
+            @if($pombo->mae_id == $pomboCad->id)
+            <a style="font-weight: normal;"> {{$pombo->mae->anilha}} - {{$pombo->mae->nome}}  {!!$pombo->mae->morto == 1 ? '(morto)' :  ''!!}</a>
             @endif
         @endforeach
     </label>
