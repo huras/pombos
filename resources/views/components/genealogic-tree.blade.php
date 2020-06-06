@@ -1,8 +1,8 @@
 @if($pombo)
   @php
   // Pega pai e mãe
-    $pombo->pai = $pombo->pai;
-    $pombo->mae = $pombo->mae;
+    $pombo->pai_id = $pombo->pai;
+    $pombo->mae_id = $pombo->mae;
 
     // Pega avós de parte de pai
     $pombo->pai->pai = $pombo->pai->pai;

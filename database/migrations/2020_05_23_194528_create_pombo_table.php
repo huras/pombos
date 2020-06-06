@@ -21,18 +21,10 @@ class CreatePomboTable extends Migration
             $table->unsignedTinyInteger('macho');
             $table->string('foto')->nullable();
             $table->text('obs')->nullable();
-            $table->string('cor')->nullable();
-            
-            $table->unsignedBigInteger('pai_id');
-            // $table->foreign('pai_id')->references('id')->on('pombo');
-            $table->unsignedBigInteger('mae_id');
-            // $table->foreign('mae_id')->references('id')->on('pombo');            
-            
-            // $table->foreign('cor_id')->references('id')->on('cor');
-
+            $table->string('cor')->nullable();            
+            $table->unsignedBigInteger('pai_id')->nullable();            
+            $table->unsignedBigInteger('mae_id')->nullable();            
             $table->unsignedBigInteger('pombal_id');
-            // $table->foreign('pombal_id')->references('id')->on('pombal');
-
             $table->timestamps();
         });
     }
