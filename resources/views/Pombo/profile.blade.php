@@ -31,7 +31,7 @@
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
                                 <div class="image-container">
-                                    <img src=" {{ (isset($pombo->foto) ? '/img/pombo/'.$pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />                                    
+                                    <img src="{{ (isset($pombo->foto) ? '/img/pombo/'.$pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />                                    
                                     <div class="middle">
                                         <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
                                         <input type="file" style="display: none;" id="profilePicture" name="file" />
@@ -157,10 +157,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id='gene-div'>
+                                @include('components.genealogic-tree', ['pombo' => $pombo])
+                            </div>
                         </div>
-                    </div>
-                    <div id='gene-div' style='height: 625px; width: 100vw; overflow-x: auto; overflow-y: hidden;'>
-                        @include('components.genealogic-tree', ['pombo' => $pombo])
                     </div>
                 </div>
             </div>

@@ -6,3 +6,84 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// ================================
+
+#gene-div{
+  max-width: 100%;
+  padding-right: 5px;
+}
+
+.genealogic-tree{
+  min-height: 625px;
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: calc((200px + 8px) * 3);
+    overflow-x: auto;
+    margin-left: 5px;
+}
+
+.current-pombo, .parent-pombos, .grandparent-pombos{
+  // min-width: 250px;
+  margin: 0px 4px;
+  margin-left: 16px;
+}
+
+
+
+.current-pombo{
+  margin-top: 50%;
+  transform: translateX(calc(55px - 15px)) translateY(-50%);
+}
+
+.grandparent-pombos{
+  transform: translateX(calc(16px - 15px));
+}
+
+.pombo-gen-slot{
+  position: relative;
+  background-color: rgb(233, 233, 233);
+  min-width: 180px;
+  padding: 5px 0px;
+  padding-left: 40px;
+
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 5px;
+  margin-bottom: 4px;
+  // width: 100%;
+  margin-left: 45px;
+
+  .picture{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    max-width: 70px;
+    border: 1px solid rgb(190, 190, 190);
+  }
+
+  .info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: calc(100% - 0px);
+
+    .anilha{
+      border-top: 1px solid black;
+    }
+  }
+}
+
+.pombo-pai{
+  margin-bottom: calc(64px + 32px);
+}
+
+.pombo-pai-mae{
+  margin-bottom: calc(40px);
+}

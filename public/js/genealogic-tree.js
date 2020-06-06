@@ -273,7 +273,7 @@ class GenealogicTree {
               this.canvas.width * (1 / 2),
               this.canvas.height - this.pombo.canvasImage.height / 2 - 8,
               this.pombo,
-              0.75,
+              0.5,
               0,
               5
             );
