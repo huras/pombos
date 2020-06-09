@@ -11,6 +11,9 @@
     vertical-align: inherit;
     text-align: center;
   }
+  td{
+    vertical-align: middle;
+  }
 </style>
 <div class="uper">
   @if(session()->get('success'))
