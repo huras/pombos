@@ -2,12 +2,6 @@
 
 @section('content')
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js" type="text/javascript"></script> --}}
-<link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css"/>
-
 <?php
     //seta o local pra br
     setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -21,7 +15,7 @@
 
 
 <style>
-    body{
+    #meu-body{
         padding-top: 68px;
         padding-bottom: 50px;
     }
@@ -43,11 +37,9 @@
     
 </style>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>    
+ 
     
-<div class="container">
+<div class="container" id='meu-body'>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -206,4 +198,10 @@ var getCanvas;
         }
     })
 </script>     --}}
+
+<script>
+    window.addEventListener('load', () => {
+        document.getElementById('basicInfo-tab').click();
+    });
+</script>
 @endsection

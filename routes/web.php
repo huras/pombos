@@ -17,13 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pombos', 'PomboController@index');
-Route::post('/pombo/update/{id}', 'PomboController@update');
-Route::get('/pombo/profile/{id}', 'PomboController@profile')->name('pombo.profile');
-Route::get('/pombo/pdf{id}', 'PomboController@geraPdf')->name('pombo.pdf');
+Route::get('/pombos', 'PomboController@index')->middleware('auth');;
+Route::post('/pombo/update/{id}', 'PomboController@update')->middleware('auth');;
+Route::get('/pombo/profile/{id}', 'PomboController@profile')->name('pombo.profile')->middleware('auth');;
+Route::get('/pombo/pdf{id}', 'PomboController@geraPdf')->name('pombo.pdf')->middleware('auth');;
 
-Route::get('/pombais', 'PombalController@index');
+Route::get('/pombais', 'PombalController@index')->middleware('auth');;
 
-Route::resource('pombo', 'PomboController');
-Route::resource('pombal', 'PombalController');
+Route::resource('pombo', 'PomboController')->middleware('auth');;
+Route::resource('pombal', 'PombalController')->middleware('auth');;
 // use "php artisan route:list" para ver as rotas
+Auth::routes();
+
+Route::get('/home', 'PomboController@index')->name('home')->middleware('auth');;

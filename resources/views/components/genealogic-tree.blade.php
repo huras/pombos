@@ -15,6 +15,7 @@
     $pombo->mae->pai = $pombo->mae->pai;
     $pombo->mae->mae = $pombo->mae->mae;
   }
+  
   @endphp
 
   {{-- <canvas id='genealogic-tree-{{$pombo->id}}'>
@@ -27,7 +28,7 @@
       genealogicTree.start(currentPombo);
     });
   </script> --}}
-  @if(isset($print))
+  
     <style>
       .pombo-gen-slot{
         padding-left: 16px!important;
@@ -36,6 +37,11 @@
         background-color: rgb(255, 255, 255);
         margin-bottom: 16px;
         margin-left: 128px;
+        transition: all ease-in 0.2s;
+      }
+      .pombo-gen-slot:hover{
+        background-color: rgba(200, 235, 255, 0.5);
+        transition: all ease-out 0.3s;
       }
 
       .info .nome{
@@ -52,9 +58,24 @@
         font-size: 24px;
       }
 
-      .pombo-filho{
-        margin-left: 32px;
-      }
+      @if(isset($print))
+        .pombo-filho {
+            margin-left: 32px;
+        }
+      @else
+        .pombo-filho{
+            margin-left: 0px;
+        }
+        #gene-div{
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .genealogic-tree{
+          justify-content: space-evenly;
+        }
+      @endif
 
       
       .pombo-pai{
@@ -64,13 +85,21 @@
       .pombo-pai-mae{
         margin-bottom: 80px;
       }
+
+      .pombo-gen-slot{
+        cursor: pointer;
+      }
+
+      .pombo-gen-slot .info .anilha{
+        border-top: 2px solid #e2e2e2;
+      }
     </style>
-  @endif
+  
 
   <div class='genealogic-tree'>
     
-    <div class='pombo-gen-slot pombo-filho'>
-      @if(!isset($print))
+    <div class='pombo-gen-slot pombo-filho' title='Ir para perfil' onclick='window.location = "/pombo/profile/{{$pombo->id}}"'>
+      @if(isset($useImage))
         <img class='picture' src="{{ (isset($pombo->foto) ? ''.$pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
       @endif
       <div class='info'>
@@ -79,8 +108,8 @@
       </div>
     </div>
     <div class='parent-pombos'>
-      <div class='pombo-gen-slot pombo-pai'>
-        @if(!isset($print))
+      <div class='pombo-gen-slot pombo-pai' title='Ir para perfil' onclick='window.location = "{{isset($pombo->pai) ? '/pombo/profile/'.$pombo->pai->id : ''}}"'>
+        @if(isset($useImage))
           <img class='picture' src="{{ (isset($pombo->pai->foto) ? ''.$pombo->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
@@ -88,8 +117,8 @@
           <div class='anilha'> {{ isset($pombo->pai) ? $pombo->pai->anilha : 'Sem cadastro'}} </div>
         </div>
       </div>
-      <div class='pombo-gen-slot'>
-        @if(!isset($print))
+      <div class='pombo-gen-slot' title='Ir para perfil' onclick='window.location = "{{isset($pombo->mae) ? '/pombo/profile/'.$pombo->mae->id : ''}}"'>
+        @if(isset($useImage))
           <img class='picture' src="{{ (isset($pombo->mae->foto) ? ''.$pombo->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
@@ -99,8 +128,8 @@
       </div>
     </div>
     <div class='grandparent-pombos'>
-      <div class='pombo-gen-slot'>
-        @if(!isset($print))
+      <div class='pombo-gen-slot' title='Ir para perfil' onclick='window.location = "{{isset($pombo->pai->pai) ? '/pombo/profile/'.$pombo->pai->pai->id : ''}}"'>
+        @if(isset($useImage))
           <img class='picture' src="{{ (isset($pombo->pai->pai->foto) ? ''.$pombo->pai->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
@@ -108,8 +137,8 @@
           <div class='anilha'> {{isset($pombo->pai->pai) ? $pombo->pai->pai->anilha : 'Sem cadastro'}} </div>
         </div>
       </div>
-      <div class='pombo-gen-slot pombo-pai-mae'>
-        @if(!isset($print))
+      <div class='pombo-gen-slot pombo-pai-mae' title='Ir para perfil' onclick='window.location = "{{isset($pombo->pai->mae) ? '/pombo/profile/'.$pombo->pai->mae->id : ''}}"'>
+        @if(isset($useImage))
           <img class='picture' src="{{ (isset($pombo->pai->mae->foto) ? ''.$pombo->pai->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
@@ -118,8 +147,8 @@
         </div>
       </div>
 
-      <div class='pombo-gen-slot'>
-        @if(!isset($print))
+      <div class='pombo-gen-slot' title='Ir para perfil' onclick='window.location = "{{isset($pombo->mae->pai) ? '/pombo/profile/'.$pombo->mae->pai->id : ''}}"'>
+        @if(isset($useImage))
           <img class='picture' src="{{ (isset($pombo->mae->pai->foto) ? ''.$pombo->mae->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
@@ -127,8 +156,8 @@
           <div class='anilha'> {{isset($pombo->mae->pai) ? $pombo->mae->pai->anilha : 'Sem cadastro'}} </div>
         </div>
       </div>
-      <div class='pombo-gen-slot'>
-        @if(!isset($print))
+      <div class='pombo-gen-slot' title='Ir para perfil' onclick='window.location = "{{isset($pombo->mae->mae) ? '/pombo/profile/'.$pombo->mae->mae->id : ''}}"'>
+        @if(isset($useImage))
           <img class='picture' src="{{ (isset($pombo->mae->mae->foto) ? ''.$pombo->mae->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
