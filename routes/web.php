@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/pombos', 'PomboController@index')->middleware('auth');;
+Route::get('/', 'PomboController@index')->middleware('auth');
+
+Route::get('/pombos', 'PomboController@index')->middleware('auth');
 Route::post('/pombo/update/{id}', 'PomboController@update')->middleware('auth');;
 Route::get('/pombo/profile/{id}', 'PomboController@profile')->name('pombo.profile')->middleware('auth');;
 Route::get('/pombo/pdf{id}', 'PomboController@geraPdf')->name('pombo.pdf')->middleware('auth');;
