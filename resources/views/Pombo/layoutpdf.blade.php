@@ -160,7 +160,7 @@
 <div class="">
     <label style="font-weight:bold;">Árvore genealógica: </label>    
     <div id='gene-div' style="background-color: white">
-        @include('components.genealogic-tree', ['pombo' => $pombo])
+        @include('components.genealogic-tree', ['pombo' => $pombo, 'print' => true])
     </div>
 </div>
 <hr />
