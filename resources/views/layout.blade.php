@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="https://image.flaticon.com/icons/png/512/47/47092.png" sizes="30x30">
-  <title>Pombo System</title>
+  <title>Pombal WSA</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
