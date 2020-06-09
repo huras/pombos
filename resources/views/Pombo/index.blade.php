@@ -5,6 +5,12 @@
   .uper {
     margin-top: 40px;    
   }
+  table.dataTable thead th, table.dataTable thead td{
+    padding: 0px 6px;
+    padding-top: 2px;
+    vertical-align: inherit;
+    text-align: center;
+  }
 </style>
 <div class="uper">
   @if(session()->get('success'))
