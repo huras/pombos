@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="https://image.flaticon.com/icons/png/512/47/47092.png" sizes="30x30">
 
-    <title> Pidgey System </title>
+    <title> Pombal WSA </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,7 +27,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}" style='display: flex; justify-content: center; align-items: center;'>
                     <img src="https://img.pokemondb.net/sprites/silver/normal/pidgey.png" style='width: 45px; height: auto;' alt="" srcset="">
                     <span>
-                        Pidgey System
+                        Pombal WSA
                     </span> 
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
