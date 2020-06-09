@@ -59,16 +59,19 @@
             </td>
             <td>{{$item->pombal}}</td>
             <td>{{$item->cor}}</td>
+
             <td> 
-                @if($item->pai_id != 0)
+                @if($item->pai)
                     <a href="{{ route('pombo.edit', $item->pai->id)}}" class="">{{$item->pai->nome}} {!!$item->pai->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166			h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!}</a> 
                 @endif
             </td>
-            <td> 
-                @if($item->mae_id != 0)
-                    <a href="{{ route('pombo.edit', $item->mae->id)}}" class="">{{$item->mae->nome}} {!!$item->mae->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166			h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!}</a> 
-                @endif
+
+            <td>
+              @if ($item->mae)
+              <a href="{{ route('pombo.edit', $item->mae->id)}}" class="">{{$item->mae->nome}} {!!$item->mae->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166			h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!}</a> 
+              @endif
             </td>
+
             <td>
                 <div style='display: flex;'>
                     <a href="{{ route('pombo.profile', $item->id)}}" class="btn btn-outline-info"> Perfil </a>
@@ -76,7 +79,7 @@
                     <a href="{{ route('pombo.edit', $item->id)}}" class="btn btn-outline-primary"> Editar </a>
                     <pre> </pre>
 
-                    {{-- <form action="{{ route('pombo.destroy', $item->id)}}" method="post">
+                    <form action="{{ route('pombo.destroy', $item->id)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button 
@@ -87,7 +90,7 @@
                                 event.preventDefault();
                             }
                         '> Deletar </button>
-                    </form> --}}
+                    </form>
 
                 </div>
             </td>

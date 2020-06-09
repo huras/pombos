@@ -1,17 +1,20 @@
 @if($pombo)
   @php
-  // Pega pai e mãe
+  // Pega pai
+  if($pombo->pai){
     $pombo->pai_id = $pombo->pai;
-    $pombo->mae_id = $pombo->mae;
-
     // Pega avós de parte de pai
     $pombo->pai->pai = $pombo->pai->pai;
     $pombo->pai->mae = $pombo->pai->mae;
+  }
 
-    // Pega avós de parte de mãe
+  // Pega mãe
+  if($pombo->mae){
+    $pombo->mae_id = $pombo->mae;
+   // Pega avós de parte de mãe
     $pombo->mae->pai = $pombo->mae->pai;
     $pombo->mae->mae = $pombo->mae->mae;
-
+  }
   @endphp
 
   {{-- <canvas id='genealogic-tree-{{$pombo->id}}'>
@@ -38,15 +41,15 @@
       <div class='pombo-gen-slot pombo-pai'>
         <img class='picture' src="{{ (isset($pombo->pai->foto) ? ''.$pombo->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         <div class='info'>
-          <div class='nome'> {{$pombo->pai->nome}} </div>
-          <div class='anilha'> {{$pombo->pai->anilha}} </div>
+          <div class='nome'> {{ isset($pombo->pai) ? $pombo->pai->nome : 'Sem cadastro'}} </div>
+          <div class='anilha'> {{ isset($pombo->pai) ? $pombo->pai->anilha : 'Sem cadastro'}} </div>
         </div>
       </div>
       <div class='pombo-gen-slot'>
         <img class='picture' src="{{ (isset($pombo->mae->foto) ? ''.$pombo->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         <div class='info'>
-          <div class='nome'> {{$pombo->mae->nome}} </div>
-          <div class='anilha'> {{$pombo->mae->anilha}} </div>
+          <div class='nome'> {{isset($pombo->mae) ? $pombo->mae->nome : 'Sem cadastro'}} </div>
+          <div class='anilha'> {{isset($pombo->mae) ? $pombo->mae->anilha : 'Sem cadastro'}} </div>
         </div>
       </div>
     </div>
@@ -54,30 +57,30 @@
       <div class='pombo-gen-slot'>
         <img class='picture' src="{{ (isset($pombo->pai->pai->foto) ? ''.$pombo->pai->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         <div class='info'>
-          <div class='nome'> {{$pombo->pai->pai->nome}} </div>
-          <div class='anilha'> {{$pombo->pai->pai->anilha}} </div>
+          <div class='nome'> {{isset($pombo->pai) ? $pombo->pai->pai->nome : 'Sem cadastro'}} </div>
+          <div class='anilha'> {{isset($pombo->pai) ? $pombo->pai->pai->anilha : 'Sem cadastro'}} </div>
         </div>
       </div>
       <div class='pombo-gen-slot pombo-pai-mae'>
         <img class='picture' src="{{ (isset($pombo->pai->mae->foto) ? ''.$pombo->pai->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         <div class='info'>
-          <div class='nome'> {{$pombo->pai->mae->nome}} </div>
-          <div class='anilha'> {{$pombo->pai->mae->anilha}} </div>
+          <div class='nome'> {{isset($pombo->pai->mae) ? $pombo->pai->mae->nome : 'Sem cadastro'}} </div>
+          <div class='anilha'> {{isset($pombo->pai->mae) ? $pombo->pai->mae->anilha : 'Sem cadastro'}} </div>
         </div>
       </div>
 
       <div class='pombo-gen-slot'>
         <img class='picture' src="{{ (isset($pombo->mae->pai->foto) ? ''.$pombo->mae->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         <div class='info'>
-          <div class='nome'> {{$pombo->mae->pai->nome}} </div>
-          <div class='anilha'> {{$pombo->mae->pai->anilha}} </div>
+          <div class='nome'> {{isset($pombo->mae->pai) ? $pombo->mae->pai->nome : 'Sem cadastro'}} </div>
+          <div class='anilha'> {{isset($pombo->mae->pai) ? $pombo->mae->pai->anilha : 'Sem cadastro'}} </div>
         </div>
       </div>
       <div class='pombo-gen-slot'>
         <img class='picture' src="{{ (isset($pombo->mae->mae->foto) ? ''.$pombo->mae->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         <div class='info'>
-          <div class='nome'> {{$pombo->mae->mae->nome}} </div>
-          <div class='anilha'> {{$pombo->mae->mae->anilha}} </div>
+          <div class='nome'> {{isset($pombo->mae->mae) ? $pombo->mae->mae->nome : 'Sem vinculo'}} </div>
+          <div class='anilha'> {{isset($pombo->mae->mae) ? $pombo->mae->mae->anilha : 'Sem vinculo'}} </div>
         </div>
       </div>
     </div>
