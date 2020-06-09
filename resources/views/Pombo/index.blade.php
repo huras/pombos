@@ -12,8 +12,8 @@
     text-align: center;
   }
   td{
-    vertical-align: middle;
-    text-align: center;
+    vertical-align: middle!important;
+    text-align: center!important;
   }
 </style>
 <div class="uper">
