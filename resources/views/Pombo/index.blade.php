@@ -47,9 +47,9 @@
           <td style="display: none">{{$item->morto == 1 ? 'Morto' : 'Vivo'}}</td>            
             <td>
                 @if($item->foto)
-                    <img style='max-width: 50px; border-radius: 50%;' src='{{$item->foto}}'>
+                    <img style='max-width: 50px; border-radius: 50%; height: 50px;' src='{{$item->foto}}'>
                     @else
-                    <img style='max-width: 50px; border-radius: 50%;' src='https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'>                    
+                    <img style='max-width: 50px; border-radius: 50%; height: 50px;' src='https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'>                    
                 @endif
             </td>            
             <td>{{$item->anilha}}</td>
