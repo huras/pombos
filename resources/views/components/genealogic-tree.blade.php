@@ -103,7 +103,7 @@
         <img class='picture' src="{{ (isset($pombo->foto) ? ''.$pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
       @endif
       <div class='info'>
-        <div class='nome'> {{$pombo->nome.' '.($pombo->macho == 1) ? '♂' : '♀' }} </div>
+        <div class='nome'> {{$pombo->nome}} {{($pombo->macho == 1) ? '♂' : '♀'}}</div>
         <div class='anilha'> {{$pombo->anilha}} </div>
       </div>
     </div>
