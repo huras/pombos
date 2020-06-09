@@ -13,6 +13,7 @@
   }
   td{
     vertical-align: middle;
+    text-align: center;
   }
 </style>
 <div class="uper">
