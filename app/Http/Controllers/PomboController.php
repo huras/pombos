@@ -195,7 +195,9 @@ class PomboController extends Controller
         $pombos = Pombo::all();
         $pombo = Pombo::findOrFail($id);        
 
-        $pdf = PDF::loadView('Pombo.layoutpdf', compact('pombo','pombos'));
+        return view('Pombo.layoutpdf', compact('pombo', 'pombos'));        
+
+        $pdf = PDF::loadView('Pombo.layoutpdf', compact('pombo','pombos'));        
         return $pdf->setPaper('a4')->stream(''.$pombo->anilha.'-'.$pombo->nome.'_Perfil.pdf');
 
     }
