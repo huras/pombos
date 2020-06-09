@@ -135,7 +135,8 @@ table, th, td, th {
 
             <div class="form-group">
                 <span> Pai: </span>
-                <select class="form-control pombo-select2" name="pai_id">                    
+                <select class="form-control pombo-select2" name="pai_id">         
+                    <option> Selecione ... </option>           
                     @foreach($pombos as $pomboCad)
                         @if($pomboCad->macho == '1')
                             <option value="{{$pomboCad->id}}" <?php if($pomboCad->id == old('pai_id') ){echo("selected");}?> > {{$pomboCad->anilha}} - {{$pomboCad->nome}} {{$pomboCad->morto == 1 ? '(morto)' :  ''}} </option>
@@ -146,7 +147,8 @@ table, th, td, th {
 
             <div class="form-group">
                 <span> Mae: </span>
-                <select class="form-control pombo-select2" name="mae_id">                    
+                <select class="form-control pombo-select2" name="mae_id">
+                    <option> Selecione ... </option>
                     @foreach($pombos as $pomboCad)                    
                         @if($pomboCad->macho == '0')
                             <option value="{{$pomboCad->id}}" <?php if($pomboCad->id == old('mae_id') ){echo("selected");}?> > {{$pomboCad->anilha}} - {{$pomboCad->nome}} {{$pomboCad->morto == 1 ? '(morto)' :  ''}} </option>
