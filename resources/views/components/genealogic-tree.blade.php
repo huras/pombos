@@ -113,8 +113,8 @@
           <img class='picture' src="{{ (isset($pombo->pai->foto) ? ''.$pombo->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
-          <div class='nome'> {{ isset($pombo->pai) ? $pombo->pai->nome : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} ♂ </div>
-          <div class='anilha'> {{ isset($pombo->pai) ? $pombo->pai->anilha : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} </div>
+          <div class='nome'> {{ isset($pombo->pai) ? $pombo->pai->nome : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} ♂ </div>
+          <div class='anilha'> {{ isset($pombo->pai) ? $pombo->pai->anilha : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} </div>
         </div>
       </div>
       <div class='pombo-gen-slot' title='Ir para perfil da mãe' onclick='window.location = "{{isset($pombo->mae) ? '/pombo/profile/'.$pombo->mae->id : ''}}"'>
@@ -122,8 +122,8 @@
           <img class='picture' src="{{ (isset($pombo->mae->foto) ? ''.$pombo->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
-          <div class='nome'> {{isset($pombo->mae) ? $pombo->mae->nome : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} ♀</div>
-          <div class='anilha'> {{isset($pombo->mae) ? $pombo->mae->anilha : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} </div>
+          <div class='nome'> {{isset($pombo->mae) ? $pombo->mae->nome : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} ♀</div>
+          <div class='anilha'> {{isset($pombo->mae) ? $pombo->mae->anilha : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} </div>
         </div>
       </div>
     </div>
@@ -133,8 +133,8 @@
           <img class='picture' src="{{ (isset($pombo->pai->pai->foto) ? ''.$pombo->pai->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
-          <div class='nome'> {{isset($pombo->pai->pai) ? $pombo->pai->pai->nome : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} ♂</div>
-          <div class='anilha'> {{isset($pombo->pai->pai) ? $pombo->pai->pai->anilha : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} </div>
+          <div class='nome'> {{isset($pombo->pai->pai) ? $pombo->pai->pai->nome : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} ♂</div>
+          <div class='anilha'> {{isset($pombo->pai->pai) ? $pombo->pai->pai->anilha : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} </div>
         </div>
       </div>
       <div class='pombo-gen-slot pombo-pai-mae' title='Ir para perfil da avó paterna' onclick='window.location = "{{isset($pombo->pai->mae) ? '/pombo/profile/'.$pombo->pai->mae->id : ''}}"'>
@@ -142,8 +142,8 @@
           <img class='picture' src="{{ (isset($pombo->pai->mae->foto) ? ''.$pombo->pai->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
-          <div class='nome'> {{isset($pombo->pai->mae) ? $pombo->pai->mae->nome : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} ♀</div>
-          <div class='anilha'> {{isset($pombo->pai->mae) ? $pombo->pai->mae->anilha : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} </div>
+          <div class='nome'> {{isset($pombo->pai->mae) ? $pombo->pai->mae->nome : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} ♀</div>
+          <div class='anilha'> {{isset($pombo->pai->mae) ? $pombo->pai->mae->anilha : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} </div>
         </div>
       </div>
 
@@ -152,8 +152,8 @@
           <img class='picture' src="{{ (isset($pombo->mae->pai->foto) ? ''.$pombo->mae->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
-          <div class='nome'> {{isset($pombo->mae->pai) ? $pombo->mae->pai->nome : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} ♂</div>
-          <div class='anilha'> {{isset($pombo->mae->pai) ? $pombo->mae->pai->anilha : '<span style='color: #d4d4d4'> Sem cadastro </span>'}} </div>
+          <div class='nome'> {{isset($pombo->mae->pai) ? $pombo->mae->pai->nome : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} ♂</div>
+          <div class='anilha'> {{isset($pombo->mae->pai) ? $pombo->mae->pai->anilha : '<span style="color: #d4d4d4"> Sem cadastro </span>'}} </div>
         </div>
       </div>
       <div class='pombo-gen-slot' title='Ir para perfil da avó materna' onclick='window.location = "{{isset($pombo->mae->mae) ? '/pombo/profile/'.$pombo->mae->mae->id : ''}}"'>
