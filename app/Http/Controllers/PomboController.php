@@ -8,9 +8,14 @@ use App\Models\Pombal;
 use Validator;
 use Intervention\Image\ImageManagerStatic as Image;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
 
 class PomboController extends Controller
 {
+    public function usu(){
+        return view('auth.register');
+    }
+
     public function index()
     {
         $pombos = Pombo::all();    
@@ -19,6 +24,10 @@ class PomboController extends Controller
 
     public function create()
     {
+        if (Auth::user()->type == 0) {
+            return redirect('/');
+        }
+
         $pombos = Pombo::all();
         $pombais = Pombal::all();
         return view('Pombo.create', compact(['pombos', 'pombais']));
@@ -26,6 +35,10 @@ class PomboController extends Controller
 
     public function store(Request $request)
     {
+        if (Auth::user()->type == 0) {
+            return redirect('/');
+        }
+
         $val = $this->validatePombo($request->all());
         $valAnilha = $this->validateAnilha($request->all());
 
@@ -73,12 +86,21 @@ class PomboController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->type == 0) {
+            return redirect('/');
+        }
+
         $pombos = Pombo::all();
         $pombo = Pombo::findOrFail($id);
         return view('Pombo.edit', compact('pombo', 'pombos'));
     }  
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
+        if (Auth::user()->type == 0) {
+            return redirect('/');
+        }
+
         $data = $request->all();        
         $val = $this->validatePombo($request->all());
 
@@ -123,6 +145,9 @@ class PomboController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user()->type == 0) {
+            return redirect('/');
+    }
     $pombo = Pombo::findOrFail($id);
 
         // Remove a imagem do pombo
