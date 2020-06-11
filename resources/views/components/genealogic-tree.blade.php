@@ -14,9 +14,7 @@
    // Pega avós de parte de mãe
     $pombo->mae->pai = $pombo->mae->pai;
     $pombo->mae->mae = $pombo->mae->mae;
-  }
-
-  
+  } 
   
   @endphp
 

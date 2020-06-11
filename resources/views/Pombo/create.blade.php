@@ -114,15 +114,97 @@ table, th, td, th {
         <span id="filelbl"> Foto: </span>
         <input id="fileinput" type="file" class="form-control integer-mask" name="foto" onchange="inputfoto()" style="margin-bottom: 1rem"/>
             
-            @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha'])
-            @include('components.textInput', ['label'=>'Nome', 'name'=>'nome'])
+            @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'id' => 'anilha-input', 'oninput' => 'deduceSonsByAnilha'])
+            <script>
+                const pombos = JSON.parse(`{!!json_encode($pombos)!!}`);                
+                let deduceSonsByAnilha = () => {
+                    let target = document.getElementById('anilha-input');
+                    let ProvaveisFilhos = [];
+                    let containerParent = document.querySelector('#sons-by-anilha');
+                    let container = containerParent.querySelector(".my-container");
+
+                    if(target.value.length >= 3) {
+                        containerParent.style.display = 'block';
+                        const valueToSearch = target.value.toLowerCase();
+                        ProvaveisFilhos = pombos.filter((pombo) => {
+                            return (pombo.temp_pai ? pombo.temp_pai.toLowerCase().includes(valueToSearch) : false) || (pombo.temp_mae ? pombo.temp_mae.toLowerCase().includes(valueToSearch) : false);
+                        });
+
+                        container.innerHTML = "";
+                        ProvaveisFilhos.map(pombo => {
+                            container.innerHTML += `<div style='display: flex;'> 
+                                <div class="form-check">
+                                    <label class="form-check-label" >
+                                        <input class="form-check-input" type="checkbox" value='`+pombo.id+`' name='filhos[]'>
+                                        `+pombo.nome+` - `+pombo.anilha+``+(pombo.temp_pai ? ',  Pai temporário: "<b>'+pombo.temp_pai+'</b>"' : '')+``+(pombo.temp_mae ? ',  Mãe temporária: "<b>'+pombo.temp_mae+'</b>"' : '')+`
+                                    </label>
+                                </div>
+                            </div>`;
+                        });
+
+                        if(ProvaveisFilhos.length == 0)
+                            containerParent.style.display = 'none';
+                    } else {
+                        containerParent.style.display = 'none';
+                    }
+                }
+            </script>
+            <div id='sons-by-anilha' style='margin-bottom: 24px;    margin-top: -12px;'>
+                <div> Prováveis filhos:  </div>
+                <div class='my-container'>
+
+                </div>
+            </div>
+
+            @include('components.textInput', ['label'=>'Nome', 'name'=>'nome', 'id' => 'nome-input', 'oninput' => 'deduceSonsByNome'])
+            <script>
+                 let deduceSonsByNome = () => {
+                    let target = document.getElementById('nome-input');
+                    let ProvaveisFilhos = [];
+                    let containerParent = document.querySelector('#sons-by-nome');
+                    let container = containerParent.querySelector(".my-container");
+
+                    if(target.value.length >= 3) {
+                        containerParent.style.display = 'block';
+                        const valueToSearch = target.value.toLowerCase();
+                        ProvaveisFilhos = pombos.filter((pombo) => {
+                            return (pombo.temp_pai ? pombo.temp_pai.toLowerCase().includes(valueToSearch) : false) || (pombo.temp_mae ? pombo.temp_mae.toLowerCase().includes(valueToSearch) : false);
+                        });                        
+                        
+                        container.innerHTML = "";
+                        ProvaveisFilhos.map(pombo => {
+                            container.innerHTML += `<div class='dflex'> 
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value='`+pombo.id+`' name='filhos[]'>
+                                        `+pombo.nome+` - `+pombo.anilha+``+(pombo.temp_pai ? ',  Pai temporário: "<b>'+pombo.temp_pai+'</b>"' : '')+``+(pombo.temp_mae ? ',  Mãe temporária: "<b>'+pombo.temp_mae+'</b>"' : '')+`
+                                    </label>
+                                </div>
+                            </div>`;
+                        });
+
+                        if(ProvaveisFilhos.length == 0)
+                            containerParent.style.display = 'none';
+                    } else {
+                        containerParent.style.display = 'none';
+                    }
+                }
+                deduceSonsByAnilha();
+            </script>
+            <div id='sons-by-nome' style='margin-bottom: 24px;     margin-top: -12px;'>
+                <div> Prováveis filhos:  </div>
+                <div class='my-container'>
+
+                </div>
+            </div>
+
             @include('components.textInput', ['label'=>'Data de Nascimento', 'name'=>'nascimento', 'mask' => 'date-mask'])
 
             <div class="form-group">
                 <label class='w-100'>
                     <span> Sexo: </span>
                     <?php $sexos = [1 => 'Macho', 0 => 'Fêmea'] ?>
-                    <select name="macho" class="form-control">
+                    <select name="macho" class="form-control" id='pombo-sexo'>
                         @foreach($sexos as $key => $sexo)
                             <option value="{{$key}}" 
                                 <?php if($key == old('macho') ){ echo(" selected ");}?> > 
@@ -135,27 +217,53 @@ table, th, td, th {
 
             <div class="form-group">
                 <span> Pai: </span>
-                <select class="form-control pombo-select2" name="pai_id">         
-                    <option value="0"> Sem pai </option>           
+                <select class="form-control pombo-select2" name="pai_id" id='pai_id' onchange='changePai();'>         
+                    <option value="0"> Pai ainda não cadastrado </option>           
                     @foreach($pombos as $pomboCad)
                         @if($pomboCad->macho == '1')
                             <option value="{{$pomboCad->id}}" <?php if($pomboCad->id == old('pai_id') ){echo("selected");}?> > {{$pomboCad->anilha}} - {{$pomboCad->nome}} {{$pomboCad->morto == 1 ? '(morto)' :  ''}} </option>
                         @endif
                     @endforeach
                 </select>
+                <input type="text" name='temp_pai' id='temp_pai' placeholder="Anilha ou nome do pai (temporário)" style='margin-top: 8px; display: none;' class='form-control'>
             </div>
+            <script>
+                let changePai = () => {
+                    const value = parseInt(document.getElementById('pai_id').value);
+                    let exInput = document.getElementById('temp_pai');
+                    if (value == 0) {
+                        exInput.style.display = 'block';
+                    } else {
+                        exInput.style.display = 'none';
+                    }
+                }
+                changePai();
+            </script>
 
             <div class="form-group">
                 <span> Mae: </span>
-                <select class="form-control pombo-select2" name="mae_id">
-                    <option value="0"> Sem mãe </option>
+                <select class="form-control pombo-select2" name="mae_id" id='mae_id' onchange="changeMae();">
+                    <option value="0"> Mãe ainda não cadastrada </option>
                     @foreach($pombos as $pomboCad)                    
                         @if($pomboCad->macho == '0')
                             <option value="{{$pomboCad->id}}" <?php if($pomboCad->id == old('mae_id') ){echo("selected");}?> > {{$pomboCad->anilha}} - {{$pomboCad->nome}} {{$pomboCad->morto == 1 ? '(morto)' :  ''}} </option>
                         @endif
                     @endforeach
                 </select>
+                <input type="text" name='temp_mae' id='temp_mae' placeholder="Anilha ou nome da mãe (temporário)" style='margin-top: 8px; display: none;' class='form-control'>
             </div>
+            <script>
+                let changeMae = () => {
+                    const value = parseInt(document.getElementById('mae_id').value);
+                    let exInput = document.getElementById('temp_mae');
+                    if (value == 0) {
+                        exInput.style.display = 'block';
+                    } else {
+                        exInput.style.display = 'none';
+                    }
+                }
+                changeMae();
+            </script>
 
             @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourada', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB')])
 

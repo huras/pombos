@@ -115,15 +115,17 @@
                                                 <label style="font-weight:bold;">Pai: </label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                @foreach($pombos as $pomboCad)                                                    
+                                                @if($pombo->pai)
                                                     <td>
-                                                        @if($pombo->pai)
+                                                        @foreach($pombos as $pomboCad)
                                                             @if($pombo->pai_id == $pomboCad->id)                                                        
                                                                 <a href="{{ route('pombo.profile', $pomboCad->id)}}" class=""> {!!$pombo->pai->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g><g><path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!} {{$pombo->pai->anilha}} - {{$pombo->pai->nome}} </a>                                                             
                                                             @endif
-                                                        @endif
+                                                        @endforeach
                                                     </td>
-                                                @endforeach
+                                                @else
+                                                    <span title='Ainda não cadastrado'> {{$pombo->temp_pai}} </span>
+                                                @endif
                                             </div>
                                         </div>
                                         <hr />
@@ -132,15 +134,17 @@
                                                 <label style="font-weight:bold;">Mãe: </label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                @foreach($pombos as $pomboCad)                                                    
+                                                @if ($pombo->mae)
                                                     <td>
-                                                        @if ($pombo->mae)                                                         
+                                                        @foreach($pombos as $pomboCad)
                                                             @if($pombo->mae_id == $pomboCad->id)                                                        
                                                                 <a href="{{ route('pombo.profile', $pombo->mae->id)}}" class=""> {!!$pombo->mae->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g><g><path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!} {{$pombo->mae->anilha}} - {{$pombo->mae->nome}} </a> 
                                                             @endif
-                                                        @endif
+                                                        @endforeach
                                                     </td>
-                                                @endforeach
+                                                @else
+                                                    <span title='Ainda não cadastrado'>{{$pombo->temp_mae}} </span>
+                                                @endif
                                             </div>
                                         </div>
                                         <hr />
