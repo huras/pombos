@@ -19,8 +19,8 @@ window.addEventListener('load', function () {
                 "info": "Exibindo _START_ até _END_ de _TOTAL_ linhas",
                 'search': 'Pesquisa rápida:',
                 "zeroRecords": "0 resultados",
-                "emptyTable": "Tabela vazia",
                 "thousands": ".",
+                "emptyTable": "Tabela vazia",
             },
             "pageLength": 100
         });
