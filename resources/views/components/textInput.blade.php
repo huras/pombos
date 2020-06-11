@@ -10,6 +10,7 @@
             placeholder="{{ (!isset($placeholder) ? "" : $placeholder) }}"
             onkeyup="{{ (!isset($onkeyup) ? "" : $onkeyup) }}"
             id="{{ (!isset($id) ? "" : $id) }}"
+            {{ (!isset($oninput) ? "" : "oninput=".$oninput."(event);") }}
         />
     </label>
 </div>

@@ -8,17 +8,19 @@ class Pombo extends Model
 {
     protected $table = 'pombo';
     public $fillable = [
-        'anilha', 
-        'nome', 
-        'nascimento', 
-        'macho', 
-        'foto', 
-        'obs', 
-        'pai_id', 
-        'mae_id', 
-        'cor', 
+        'anilha',
+        'nome',
+        'nascimento',
+        'macho',
+        'foto',
+        'obs',
+        'pai_id',
+        'mae_id',
+        'cor',
         'pombal',
-        'morto'
+        'morto',
+        'temp_pai',
+        'temp_mae',
     ];
 
     public function pai()
