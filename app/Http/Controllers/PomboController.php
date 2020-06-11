@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pombo;
 use App\Models\Pombal;
+use App\Models\Usuario;
 use Validator;
 use Intervention\Image\ImageManagerStatic as Image;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -12,10 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PomboController extends Controller
 {
-    public function usu(){
-        return view('auth.register');
-    }
-
     public function index()
     {
         $pombos = Pombo::all();    
@@ -162,7 +159,6 @@ class PomboController extends Controller
         return redirect()->back()->with('success', 'Pombo removido com sucesso!');
     }
 
-
     public function profile($id)
     {
         $pombos = Pombo::all();
@@ -171,7 +167,6 @@ class PomboController extends Controller
     }
     
     // ============================= Funcionalidades
-
     function validatePombo($request)
     {
         $rules = [

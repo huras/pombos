@@ -47,7 +47,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @if (Auth::user()->type == 2)
-                                <a class="dropdown-item" href="/usu">                                
+                                <a class="dropdown-item" href="/usuarios">                                
                                     {{ __('Registrar usuários') }}
                                 </a>
                             @endif                            

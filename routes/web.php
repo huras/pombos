@@ -19,17 +19,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PomboController@index')->middleware('auth');
 
-Route::get('/usu', 'PomboController@usu')->name('auth.register')->middleware('auth');
-
 Route::get('/pombos', 'PomboController@index')->middleware('auth');
-Route::post('/pombo/update/{id}', 'PomboController@update')->middleware('auth');;
-Route::get('/pombo/profile/{id}', 'PomboController@profile')->name('pombo.profile')->middleware('auth');;
-Route::get('/pombo/pdf{id}', 'PomboController@geraPdf')->name('pombo.pdf')->middleware('auth');;
+Route::post('/pombo/update/{id}', 'PomboController@update')->middleware('auth');
+Route::get('/pombo/profile/{id}', 'PomboController@profile')->name('pombo.profile')->middleware('auth');
+Route::get('/pombo/pdf{id}', 'PomboController@geraPdf')->name('pombo.pdf')->middleware('auth');
 
-Route::get('/pombais', 'PombalController@index')->middleware('auth');;
+Route::get('/usuarios', 'Usuarios@index')->name('auth.index')->middleware('auth');
+Route::post('/usuarios/store', 'Usuarios@store')->name('auth.store')->middleware('auth');
+Route::get('/usuarios/create', 'Usuarios@create')->name('auth.create')->middleware('auth');
+Route::get('/usuarios/edit', 'Usuarios@edit')->name('auth.edit')->middleware('auth');
+Route::get('/usuarios/destroy', 'Usuarios@destroy')->name('auth.destroy')->middleware('auth');
+Route::post('/usuarios/update/{id}', 'Usuarios@update')->middleware('auth');
 
-Route::resource('pombo', 'PomboController')->middleware('auth');;
-Route::resource('pombal', 'PombalController')->middleware('auth');;
+
+Route::resource('pombo', 'PomboController')->middleware('auth');
+Route::resource('pombal', 'PombalController')->middleware('auth');
 
 
 // use "php artisan route:list" para ver as rotas
