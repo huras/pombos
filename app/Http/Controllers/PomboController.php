@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PombosExport;
 use Illuminate\Http\Request;
 use App\Models\Pombo;
 use App\Models\Pombal;
@@ -10,6 +11,11 @@ use Validator;
 use Intervention\Image\ImageManagerStatic as Image;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xls;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx as WriterXlsx;
 
 class PomboController extends Controller
 {
@@ -221,6 +227,77 @@ class PomboController extends Controller
         return $pdf->setPaper('a4')->stream(''.$pombo->anilha.'-'.$pombo->nome.'_Perfil.pdf');
 
     }
+
+    public function exporta(){
+        
+        $spreadsheet = new Spreadsheet();
+        $Excel_writer = new WriterXlsx($spreadsheet);
+
+        $spreadsheet->setActiveSheetIndex(0);
+        $activeSheet = $spreadsheet->getActiveSheet();
+        
+        // Auto size no range
+        foreach(range('A','H') as $columnID) {
+            $spreadsheet->getActiveSheet()->getColumnDimension($columnID)
+                ->setAutoSize(true);
+        }
+
+        //Cabeçalho negrito
+        foreach(range('A','H') as $row) {
+            $col = 1;
+            $spreadsheet->getActiveSheet()->getStyle($row.$col)->getFont()->setBold( true );
+        }        
+        
+        $activeSheet->setCellValue('A1', 'Anilha');
+        $activeSheet->setCellValue('B1', 'Nome');
+        $activeSheet->setCellValue('C1', 'Nascimento');
+        $activeSheet->setCellValue('D1', 'Sexo');
+        $activeSheet->setCellValue('E1', 'Cor');
+        // $activeSheet->setCellValue('G1', 'Pai');
+        // $activeSheet->setCellValue('H1', 'Mae');
+        $activeSheet->setCellValue('F1', 'Morto/Vivo');
+        $activeSheet->setCellValue('G1', 'Pombal');
+        $activeSheet->setCellValue('H1', 'obs');                
+
+        $pombos = Pombo::all();
+        $count = count($pombos);
+        
+        if ($count > 0){
+        $i = 2;
+        foreach($pombos as $pombo){        
+            $activeSheet->setCellValue('A'.$i , $pombo['anilha']);
+                $activeSheet->setCellValue('B'.$i , utf8_encode($pombo['nome']));
+                $activeSheet->setCellValue('C'.$i , $pombo['nascimento']);
+                    if($pombo['macho'] == 1){
+                        $activeSheet->setCellValue('D'.$i , 'Macho');    
+                    } else {
+                        $activeSheet->setCellValue('D'.$i , 'Fêmea');
+                    }                
+                $activeSheet->setCellValue('E'.$i , utf8_encode($pombo['cor']));
+                // if($pombo['pai_id']){                    
+                // }
+                // $activeSheet->setCellValue('G'.$i , $pombo['pai_id']);
+                // $activeSheet->setCellValue('H'.$i , $pombo['mae_id']);
+                    if($pombo['morto'] == 1){
+                        $activeSheet->setCellValue('F'.$i ,'Morto');
+                    } else {
+                        $activeSheet->setCellValue('F'.$i ,'Vivo');
+                    }                
+                $activeSheet->setCellValue('G'.$i , $pombo['pombal']);
+                $activeSheet->setCellValue('H'.$i , utf8_encode($pombo['obs']));
+                $i++;
+            }
+
+            $filename = 'pombos.xlsx';
+            
+            header('Content-Type: application/vnd.ms-excel');
+            header('Content-Disposition: attachment;filename="'. $filename);
+            header('Cache-Control: max-age=0');
+
+            $Excel_writer->save('php://output');
+        }
+    }
+            
 }
 
 

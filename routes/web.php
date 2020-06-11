@@ -23,6 +23,7 @@ Route::get('/pombos', 'PomboController@index')->middleware('auth');
 Route::post('/pombo/update/{id}', 'PomboController@update')->middleware('auth');
 Route::get('/pombo/profile/{id}', 'PomboController@profile')->name('pombo.profile')->middleware('auth');
 Route::get('/pombo/pdf{id}', 'PomboController@geraPdf')->name('pombo.pdf')->middleware('auth');
+Route::get('/pombo/exporta', 'PomboController@exporta')->name('pombo.exporta')->middleware('auth');
 
 Route::get('/usuarios', 'Usuarios@index')->name('auth.index')->middleware('auth');
 Route::post('/usuarios/store', 'Usuarios@store')->name('auth.store')->middleware('auth');
