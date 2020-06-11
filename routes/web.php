@@ -27,8 +27,8 @@ Route::get('/pombo/pdf{id}', 'PomboController@geraPdf')->name('pombo.pdf')->midd
 Route::get('/usuarios', 'Usuarios@index')->name('auth.index')->middleware('auth');
 Route::post('/usuarios/store', 'Usuarios@store')->name('auth.store')->middleware('auth');
 Route::get('/usuarios/create', 'Usuarios@create')->name('auth.create')->middleware('auth');
-Route::get('/usuarios/edit', 'Usuarios@edit')->name('auth.edit')->middleware('auth');
-Route::get('/usuarios/destroy', 'Usuarios@destroy')->name('auth.destroy')->middleware('auth');
+Route::get('/usuarios/edit/{id}', 'Usuarios@edit')->name('auth.edit')->middleware('auth');
+Route::get('/usuarios/destroy/{id}', 'Usuarios@destroy')->name('auth.destroy')->middleware('auth');
 Route::post('/usuarios/update/{id}', 'Usuarios@update')->middleware('auth');
 
 

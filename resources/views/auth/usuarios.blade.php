@@ -41,22 +41,32 @@
         @foreach($usuarios as $item)
         <tr>          
             <td>{{$item->id}}</td>          
-            <td>{{$item->nome}}</td>
-            <td>{{$item->type}}</td>            
+            <td>{{$item->name}}</td>
+            <td>
+                @if ($item->type == 0)
+                    Vizualizar                    
+                @endif                       
+                @if ($item->type == 1)
+                    Editar
+                @endif       
+                @if ($item->type == 2)
+                    Admin
+                @endif       
+            </td>            
             <td>{{$item->email}}</td>
             <td>
                 <div style='display: flex;'>                    
                     @if (Auth::user()->type != 0)
-                    <a href="{{ route('auth.edit', $item->id)}}" class="btn btn-outline-primary"> Editar </a>
+                <a href="/usuarios/edit/{{$item->id}}" class="btn btn-outline-primary"> Editar </a>
                     <pre> </pre>
-                    <form action="{{ route('auth.destroy', $item->id)}}" method="post">
+                <form action="/usuarios/destroy/{{$item->id}}" method="get">
                     @csrf
                     @method('DELETE')
                     <button 
                         class="btn btn-outline-danger" 
                         type="submit" 
                         onclick='
-                            if(!confirm("Deseja mesmo remover o auth {{$item->anilha." - ".$item->nome}}  do sistema?")) {
+                            if(!confirm("Deseja mesmo remover o usuário {{$item->name}} do sistema?")) {
                                 event.preventDefault();
                             }
                         '> Deletar </button>

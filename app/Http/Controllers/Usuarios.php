@@ -59,17 +59,23 @@ class Usuarios extends Controller
             return redirect('/');
         }
 
+        $usuario = Usuario::find($id);       
         $data = $request->all();        
-        $val = $this->validateRequest($request->all());
+        $val = $this->validateRequest($request->all(), $id);
 
         //verificar se teve algum erro na validação, se sim, retorna pra pagina
         if ($val->fails()) {
             return redirect()->back()
-                    ->withInput()
+                    ->withInput()                    
                     ->withErrors($val);
         }
+
+        if($data['password'] != $usuario->password){
+            $data['password'] = bcrypt($data['password']);                
+        } else {
+            $data['password'] = $usuario->password;
+        }
         
-        $usuario = Usuario::find($id);       
         $usuario->update($data);
         return redirect('/usuarios')->with('success', 'Editado com sucesso!');
     }
@@ -89,7 +95,7 @@ class Usuarios extends Controller
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|unique:users,email'.$id,            
+            'email' => 'unique:users,email,'.$id,
             'type' => 'required',
             'password' => 'required|min:5',
             'ConfSenha' => 'same:password|min:5',            

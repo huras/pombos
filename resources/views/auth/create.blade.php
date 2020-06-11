@@ -1,8 +1,6 @@
 @extends('layout')
 
 @section('content')
-
-<script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
 <div class="card uper">
   <div class="card-header">
     Novo Usuário
@@ -19,9 +17,18 @@
             @csrf                    
             @include('components.textInput', ['label'=>'Nome', 'name'=>'name'])            
             @include('components.textInput', ['label'=>'E-mail', 'name'=>'email'])
-            @include('components.select', ['label'=>'Tipo de usuário', 'name'=>'type', $values = array(0, 1, 2)])
-            @include('components.textInput', ['label'=>'Senha', 'name'=>'password'])
-            @include('components.textInput', ['label'=>'Confirmar senha', 'name'=>'ConfSenha'])
+            <div class="form-group">
+                <label class='w-100'>
+                    Tipo de Usuário:
+                    <select name="type" id="" class="form-control pombo-select2">
+                        <option value="0">Visualiza</option>
+                        <option value="1">Editar</option>
+                        <option value="2">Administrar</option>
+                    </select>
+                </label>
+            </div>
+            @include('components.textInput', ['label'=>'Senha','placeholder' => '******','type' => 'password', 'name'=>'password'])
+            @include('components.textInput', ['label'=>'Confirmar senha','placeholder' => '******','type' => 'password', 'name'=>'ConfSenha'])
 
           <button type="submit" class="btn btn-success">Salvar</button>
           <a class="btn btn-danger" href='/usuarios'> Cancelar </a>
