@@ -20,7 +20,7 @@ class Pombo extends Model
         'pombal',
         'morto',
         'temp_pai',
-        'temp_pai',
+        'temp_mae',
     ];
 
     public function pai()
