@@ -81,6 +81,6 @@
   <script src="{{ asset('js/jquery.dataTables.min.js') }}" defer></script>
   
 
-  <script src="{{ asset('js/custom.js') }}" defer></script>
+  <script src="{{ asset('js/custom1.js') }}" defer></script>
 </body>
 </html>
