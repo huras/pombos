@@ -22,11 +22,15 @@
       {{ session()->get('success') }}  
     </div><br />
   @endif  
-<button type="button" onclick="window.location.href = '{{route('pombo.create')}}'" class="btn btn-success">Cadastrar pombo</button>
+  @if (Auth::user()->type != 0)
+  <button type="button" onclick="window.location.href = '{{route('pombo.create')}}'" class="btn btn-success">Cadastrar pombo</button>
+@endif
   <table class="table table-striped datatable">    
     <thead>        
         <tr>
-          <td>ID</td>
+          @if (Auth::user()->type != 0)
+            <td>ID</td>
+          @endif
           <td style="display: none">Morto?</td>
           <td>Foto</td>
           <td>Anilha</td>
@@ -36,14 +40,16 @@
           <td>Pombal</td>
           <td>Cor</td>
           <td>Pai</td>
-          <td>Mãe</td>
-          <td>Ações</td>
+          <td>Mãe</td>          
+          <td>Ações</td>              
         </tr>
     </thead>
     <tbody>
         @foreach($pombos as $item)
         <tr {{$item->morto == 1 ? 'style=background-color:rgb(255,221,221)' : '' }} >
-          <td>{{$item->id}}</td>
+          @if (Auth::user()->type != 0)
+            <td>{{$item->id}}</td>
+          @endif
           <td style="display: none">{{$item->morto == 1 ? 'Morto' : 'Vivo'}}</td>            
             <td>
                 @if($item->foto)
@@ -80,12 +86,12 @@
               @if ($item->mae)
               <a href="{{ route('pombo.edit', $item->mae->id)}}" class="">{{$item->mae->nome}} {!!$item->mae->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166			h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!}</a> 
               @endif
-            </td>
-
+            </td>            
             <td>
                 <div style='display: flex;'>
                     <a href="{{ route('pombo.profile', $item->id)}}" class="btn btn-outline-info"> Perfil </a>
                     <pre> </pre>
+                    @if (Auth::user()->type != 0)
                     <a href="{{ route('pombo.edit', $item->id)}}" class="btn btn-outline-primary"> Editar </a>
                     <pre> </pre>
 
@@ -103,10 +109,11 @@
                     </form>
 
                 </div>
-            </td>
+                @endif
+            </td>            
         </tr>
         @endforeach
     </tbody>
-  </table>
+  </table>  
 <div>
 @endsection
