@@ -72,13 +72,13 @@
 </div>
 
   
-  <script src="{{ asset('/js/app.js') }}" defer></script>
+  <script src="{{ asset('./js/app.js') }}" defer></script>
   
-  <script src="{{ asset('/js/jquery.mask.min.js') }}" defer></script>
+  <script src="{{ asset('./js/jquery.mask.min.js') }}" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" defer></script>
   <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
-  <script src="{{ asset('/js/jquery.dataTables.min.js') }}" defer></script>
+  <script src="{{ asset('./js/jquery.dataTables.min.js') }}" defer></script>
   
 
   <script src="{{ asset('/js/custom1.js') }}" defer></script>
