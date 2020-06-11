@@ -154,8 +154,8 @@
           <img class='picture' src="{{ (isset($pombo->mae->pai->foto) ? ''.$pombo->mae->pai->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
-          <div class='nome'> {!!isset($pombo->mae->pai) ? $pombo->mae->pai->nome : '<span style="color: #d4d4d4"> Cadastro deletado </span>'!!} ♂</div>
-          <div class='anilha'> {!!isset($pombo->mae->pai) ? $pombo->mae->pai->anilha : '<span style="color: #d4d4d4"> Cadastro deletado </span>'!!} </div>
+          <div class='nome'> {!! isset($pombo->mae) ? (isset($pombo->mae->pai) ? $pombo->mae->pai->nome : (($pombo->mae->pai_id == 0) ? '<span style="color: #d4d4d4"> Cadastro deletado </span>' : '<span style="color: #d4d4d4"> Cadastro deletado </span>') ) : '<span style="color: #d4d4d4"> Cadastro deletado </span>' !!} {{isset($pombo->mae->pai) ? (($pombo->mae->pai->macho == 1) ? '♂' : '♀') : ''}} </div>
+          <div class='anilha'> {!! isset($pombo->mae) ? (isset($pombo->mae->pai) ? $pombo->mae->pai->anilha : (($pombo->mae->pai_id == 0) ? '<span style="color: #d4d4d4"> Cadastro deletado </span>' : '<span style="color: #d4d4d4"> Cadastro deletado </span>')  ) : '<span style="color: #d4d4d4"> Cadastro deletado </span>' !!} </div>
         </div>
 
       </div>
