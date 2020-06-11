@@ -39,6 +39,7 @@
     </thead>
     <tbody>
         @foreach($usuarios as $item)
+        @if ($item->id != 1)        
         <tr>          
             <td>{{$item->id}}</td>          
             <td>{{$item->name}}</td>
@@ -76,6 +77,7 @@
                 @endif
             </td>            
         </tr>
+        @endif
         @endforeach
     </tbody>
   </table>  

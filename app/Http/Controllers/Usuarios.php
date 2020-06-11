@@ -86,8 +86,11 @@ class Usuarios extends Controller
         return redirect('/');
     }
         $Usuario = Usuario::findOrFail($id);      
-        $Usuario->delete();        
-        return redirect()->back()->with('success', 'Usuario removido com sucesso!');
+        if($Usuario->id != 1){
+            $Usuario->delete();        
+            return redirect()->back()->with('success', 'Usuario removido com sucesso!');
+        }        
+        return redirect()->back()->with('success','Ei, este usuário é master e não pode ser removido!');
     }
 
     // ============================= Funcionalidades
