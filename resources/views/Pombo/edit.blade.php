@@ -177,6 +177,8 @@ table, th, td, th {
                     <select name="morto" class="form-control">
                         <option value="0" @if($pombo->morto == '0') selected @endif >Vivo</option>                        
                         <option value="1" @if($pombo->morto == '1') selected @endif >Morto</option>                        
+                        <option value="2" @if($pombo->morto == '2') selected @endif >Doado</option>                        
+                        <option value="3" @if($pombo->morto == '3') selected @endif >Perdido</option>                                                
                     </select>
                 </label>
             </div>

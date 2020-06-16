@@ -274,6 +274,8 @@ table, th, td, th {
                     <select name="morto" class="form-control">
                         <option value="0" selected>Vivo</option>                        
                         <option value="1" >Morto</option>                        
+                        <option value="2" >Doado</option>                        
+                        <option value="3" >Perdido</option>                        
                     </select>
                 </label>
             </div>
