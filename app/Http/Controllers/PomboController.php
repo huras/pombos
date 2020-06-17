@@ -67,13 +67,16 @@ class PomboController extends Controller
         // converte base64 para imagem e salva
         if($request->fotocam){            
             $img = $request->fotocam;        
-            $folderPath = "public/img/pombo/";
-            $folderPathBkp = "public/img/pomboBpk/";
+            $folderPath = "public/img/pombo/";            
             $image_parts = explode(";base64,", $img);                        
-            $image_base64 = base64_decode($image_parts[1]);
-            $file = $folderPathBkp . uniqid() . '.png';
+            $image_base64 = base64_decode($image_parts[1]);            
             $file = $folderPath . uniqid() . '.png';
-            file_put_contents($file, $image_base64);
+            file_put_contents($file, $image_base64);                        
+
+            $folderPathBkp = "public/img/pombobkp/";
+            $filebkp = $folderPathBkp . uniqid() . '.png';
+            file_put_contents($filebkp, $image_base64);
+
             $filename = explode("public/img/pombo/", $file);
             $data['foto'] = $filename[1];
         }
@@ -83,13 +86,13 @@ class PomboController extends Controller
         if ($cover) {
             $novo_nome_imagem = rand(). '.' .$cover->getClientOriginalExtension();
             //move a iamgem para o diretorio correcto
-            $cover->move(public_path("public/img/pombo/"), $novo_nome_imagem);
+            $cover->move(public_path("img/pombo/"), $novo_nome_imagem);
             //salva a imagem na ram e dá o resize
-            $imgcrop = Image::make(public_path("public/img/pombo/".$novo_nome_imagem))->resize(250,250);
+            $imgcrop = Image::make(public_path("img/pombo/".$novo_nome_imagem))->resize(250,250);
             //salva a imagem cropada na pasta com o mesmo nome da original substituindo
-            $imgcrop->save(public_path("public/img/pombo/".$novo_nome_imagem));
+            $imgcrop->save(public_path("img/pombo/".$novo_nome_imagem));
 
-            $imgcrop->save(public_path("public/img/pomboBkp/".$novo_nome_imagem));
+            $imgcrop->save(public_path("img/pombobkp/".$novo_nome_imagem));
             $data['foto'] = $novo_nome_imagem;
         }
 
@@ -142,13 +145,16 @@ class PomboController extends Controller
         // converte base64 para imagem e salva
         if($request->fotocam){            
             $img = $request->fotocam;        
-            $folderPath = "public/img/pombo/";
-            $folderPathBkp = "public/img/pomboBpk/";
+            $folderPath = "public/img/pombo/";            
             $image_parts = explode(";base64,", $img);                        
-            $image_base64 = base64_decode($image_parts[1]);
-            $file = $folderPathBkp . uniqid() . '.png';
+            $image_base64 = base64_decode($image_parts[1]);            
             $file = $folderPath . uniqid() . '.png';
-            file_put_contents($file, $image_base64);
+            file_put_contents($file, $image_base64);                        
+
+            $folderPathBkp = "public/img/pombobkp/";
+            $filebkp = $folderPathBkp . uniqid() . '.png';
+            file_put_contents($filebkp, $image_base64);
+
             $filename = explode("public/img/pombo/", $file);
             $data['foto'] = $filename[1];
         }
@@ -157,13 +163,13 @@ class PomboController extends Controller
         if ($cover) {
             $novo_nome_imagem = rand(). '.' .$cover->getClientOriginalExtension();
             //move a iamgem para o diretorio correcto
-            $cover->move(public_path("public/img/pombo/"), $novo_nome_imagem);
+            $cover->move(public_path("img/pombo/"), $novo_nome_imagem);
             //salva a imagem na ram e dá o resize
-            $imgcrop = Image::make(public_path("public/img/pombo/".$novo_nome_imagem))->resize(250,250);
+            $imgcrop = Image::make(public_path("img/pombo/".$novo_nome_imagem))->resize(250,250);
             //salva a imagem cropada na pasta com o mesmo nome da original substituindo
-            $imgcrop->save(public_path("public/img/pombo/".$novo_nome_imagem));
+            $imgcrop->save(public_path("img/pombo/".$novo_nome_imagem));
 
-            $imgcrop->save(public_path("public/img/pomboBkp/".$novo_nome_imagem));
+            $imgcrop->save(public_path("img/pombobkp/".$novo_nome_imagem));
             $data['foto'] = $novo_nome_imagem;
         }
 
