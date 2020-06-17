@@ -57,34 +57,26 @@ class PomboController extends Controller
             return redirect()->back()
                 ->withInput()
                 ->withErrors($valAnilha);
-        }
+        }       
 
         $data = $request->all();
 
         // Set date format
         $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
 
-        
+        // converte base64 para imagem e salva
+        if($request->fotocam){            
+            $img = $request->fotocam;        
+            $folderPath = "img/pombo/";
+            $image_parts = explode(";base64,", $img);                        
+            $image_base64 = base64_decode($image_parts[1]);
+            $file = $folderPath . uniqid() . '.png';
+            file_put_contents($file, $image_base64);
+            $filename = explode("img/pombo/", $file);
+            $data['foto'] = $filename[1];
+        }
 
-        // //upload de foto da cam ja covnertida em base64
-        // if ($request->fotocam) {
-        //     $data['foto'] = $request->fotocam;
-        // }
-
-        // // upload de foto por aquivo
-        // if ($request->file('foto')) {
-        //     // pega o caminho
-        //     $imagefile = $request->file('foto')->path();
-
-        //     // pega o tipo da imagem, monta o link e converte
-        //     $type = pathinfo($imagefile, PATHINFO_EXTENSION);
-        //     $content = file_get_contents($imagefile);
-        //     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($content);
-        //     // grava a imagem convertida em base
-        //     $data['foto'] = $base64;
-        // }
-
-            //upload de foto
+        //upload de foto por arquivo
         $cover = $request->file('foto');        
         if ($cover) {
             $novo_nome_imagem = rand(). '.' .$cover->getClientOriginalExtension();
@@ -143,22 +135,17 @@ class PomboController extends Controller
         // Set date format
         $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
 
-        // //upload de foto da cam ja covnertida em base64
-        // if ($request->fotocam) {
-        //     $data['foto'] = $request->fotocam;
-        // }
-        // // upload de foto por aquivo
-        // if ($request->file('foto')) {
-        //     // pega o caminho
-        //     $imagefile = $request->file('foto')->path();
-
-        //     // pega o tipo da imagem, monta o link e converte
-        //     $type = pathinfo($imagefile, PATHINFO_EXTENSION);
-        //     $content = file_get_contents($imagefile);
-        //     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($content);
-        //     // grava a imagem convertida em base
-        //     $data['foto'] = $base64;
-        // }
+        // converte base64 para imagem e salva
+        if($request->fotocam){            
+            $img = $request->fotocam;        
+            $folderPath = "img/pombo/";
+            $image_parts = explode(";base64,", $img);                        
+            $image_base64 = base64_decode($image_parts[1]);
+            $file = $folderPath . uniqid() . '.png';
+            file_put_contents($file, $image_base64);
+            $filename = explode("img/pombo/", $file);
+            $data['foto'] = $filename[1];
+        }
         
         $cover = $request->file('foto');        
         if ($cover) {
@@ -336,5 +323,5 @@ class PomboController extends Controller
             $Excel_writer->save('php://output');
         }
     }
-            
+    
 }
