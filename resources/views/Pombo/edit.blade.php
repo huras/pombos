@@ -98,7 +98,7 @@ table, th, td, th {
                                 <tr>                                    
                                     <td>
                                         <div id="div_foto">
-                                        <img src="{{$pombo->foto}}" width="200px" heigh="140px" alt="" id="imgShow" />
+                                        <img src="{{'/img/pombo/'.$pombo->foto}}" width="200px" heigh="140px" alt="" id="imgShow" />
                                         </div>
                                         <input type="button" value="Abrir webcam" id="fotosnap" 
                                             onclick="takeSnapshot(this)" />

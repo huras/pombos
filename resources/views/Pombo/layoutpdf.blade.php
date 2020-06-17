@@ -108,7 +108,7 @@
     {{-- style="background-color: transparent; width: 727px; height: 842px;" --}}
     <div >
 <div class="image-container" style="display: flex; justify-content: center;margin-bottom: 25px;">    
-    <img src="{{ (isset($pombo->foto)) ? $pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'}}" id="imgProfile" style="width: 320px; height: 240px;  margin-top: 15px;" class="img-thumbnail" />                                     
+    <img src="{{ (isset($pombo->foto)) ? '/img/pombo/'{{$item->foto}} : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'}}" id="imgProfile" style="width: 320px; height: 240px;  margin-top: 15px;" class="img-thumbnail" />                                     
 </div>
 
 <div class="userData ml-3" style="display: flex; flex-direction: row; margin-bottom: 25px;justify-content: center;">

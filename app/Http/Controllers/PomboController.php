@@ -64,23 +64,39 @@ class PomboController extends Controller
         // Set date format
         $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
 
-        //upload de foto da cam ja covnertida em base64
-        if ($request->fotocam) {
-            $data['foto'] = $request->fotocam;
+        
+
+        // //upload de foto da cam ja covnertida em base64
+        // if ($request->fotocam) {
+        //     $data['foto'] = $request->fotocam;
+        // }
+
+        // // upload de foto por aquivo
+        // if ($request->file('foto')) {
+        //     // pega o caminho
+        //     $imagefile = $request->file('foto')->path();
+
+        //     // pega o tipo da imagem, monta o link e converte
+        //     $type = pathinfo($imagefile, PATHINFO_EXTENSION);
+        //     $content = file_get_contents($imagefile);
+        //     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($content);
+        //     // grava a imagem convertida em base
+        //     $data['foto'] = $base64;
+        // }
+
+            //upload de foto
+        $cover = $request->file('foto');        
+        if ($cover) {
+            $novo_nome_imagem = rand(). '.' .$cover->getClientOriginalExtension();
+            //move a iamgem para o diretorio correcto
+            $cover->move(public_path("img/pombo/"), $novo_nome_imagem);
+            //salva a imagem na ram e dá o resize
+            $imgcrop = Image::make(public_path("img/pombo/".$novo_nome_imagem))->resize(250,250);
+            //salva a imagem cropada na pasta com o mesmo nome da original substituindo
+            $imgcrop->save(public_path("img/pombo/".$novo_nome_imagem));
+            $data['foto'] = $novo_nome_imagem;
         }
 
-        // upload de foto por aquivo
-        if ($request->file('foto')) {
-            // pega o caminho
-            $imagefile = $request->file('foto')->path();
-
-            // pega o tipo da imagem, monta o link e converte
-            $type = pathinfo($imagefile, PATHINFO_EXTENSION);
-            $content = file_get_contents($imagefile);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($content);
-            // grava a imagem convertida em base
-            $data['foto'] = $base64;
-        }
         $pombo = Pombo::create($data);
 
         // Conecta com os possíveis filhos
@@ -127,21 +143,33 @@ class PomboController extends Controller
         // Set date format
         $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
 
-        //upload de foto da cam ja covnertida em base64
-        if ($request->fotocam) {
-            $data['foto'] = $request->fotocam;
-        }
-        // upload de foto por aquivo
-        if ($request->file('foto')) {
-            // pega o caminho
-            $imagefile = $request->file('foto')->path();
+        // //upload de foto da cam ja covnertida em base64
+        // if ($request->fotocam) {
+        //     $data['foto'] = $request->fotocam;
+        // }
+        // // upload de foto por aquivo
+        // if ($request->file('foto')) {
+        //     // pega o caminho
+        //     $imagefile = $request->file('foto')->path();
 
-            // pega o tipo da imagem, monta o link e converte
-            $type = pathinfo($imagefile, PATHINFO_EXTENSION);
-            $content = file_get_contents($imagefile);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($content);
-            // grava a imagem convertida em base
-            $data['foto'] = $base64;
+        //     // pega o tipo da imagem, monta o link e converte
+        //     $type = pathinfo($imagefile, PATHINFO_EXTENSION);
+        //     $content = file_get_contents($imagefile);
+        //     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($content);
+        //     // grava a imagem convertida em base
+        //     $data['foto'] = $base64;
+        // }
+        
+        $cover = $request->file('foto');        
+        if ($cover) {
+            $novo_nome_imagem = rand(). '.' .$cover->getClientOriginalExtension();
+            //move a iamgem para o diretorio correcto
+            $cover->move(public_path("img/pombo/"), $novo_nome_imagem);
+            //salva a imagem na ram e dá o resize
+            $imgcrop = Image::make(public_path("img/pombo/".$novo_nome_imagem))->resize(250,250);
+            //salva a imagem cropada na pasta com o mesmo nome da original substituindo
+            $imgcrop->save(public_path("img/pombo/".$novo_nome_imagem));
+            $data['foto'] = $novo_nome_imagem;
         }
 
         if ($data['morto'] == 1) {
@@ -160,12 +188,13 @@ class PomboController extends Controller
         if (Auth::user()->type == 0) {
             return redirect('/');
         }
-        $pombo = Pombo::findOrFail($id);
+        $pombo = Pombo::findOrFail($id); 
 
-        // Remove a imagem do pombo
-        if ($pombo->foto) {
-            $filepath = public_path('' . $pombo->foto);
-            if (file_exists($filepath))
+          // Remove a imagem do pombo
+          if($pombo->foto){
+            $filepath = public_path('/img/pombo/'.$pombo->foto);
+            $filepath = public_path(''.$pombo->foto);
+            if(file_exists($filepath))
                 unlink($filepath);
         }
 
