@@ -60,7 +60,7 @@
             <td style="display: none">{{$item->morto == 1 ? 'Morto' : 'Vivo'}}</td>            
               <td>
                   @if($item->foto)
-                      <img loading = "lazy" style='max-width: 50px; border-radius: 50%; height: 50px;' src='/public/img/pombo/{{$item->foto}}'>
+                      <img loading = "lazy" style='max-width: 50px; border-radius: 50%; height: 50px;' src='/img/pombo/{{$item->foto}}'>
                       @else
                       <img loading = "lazy" style='max-width: 50px; border-radius: 50%; height: 50px;' src='https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'>                    
                   @endif
@@ -148,7 +148,7 @@
                 "thousands": ".",
                 "emptyTable": "Tabela vazia",
             },
-            "pageLength": 100
+            "pageLength": 25
         });
     });
 });
