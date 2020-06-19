@@ -173,7 +173,7 @@ table, th, td, th {
 
             <div class="form-group">
                 <label class='w-100'>
-                    {{-- <span> Morto </span> --}}
+                    <span> Situação: </span>
                     <select name="morto" class="form-control">
                         <option value="0" @if($pombo->morto == '0') selected @endif >Vivo</option>                        
                         <option value="1" @if($pombo->morto == '1') selected @endif >Morto</option>                        

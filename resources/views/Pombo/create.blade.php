@@ -270,6 +270,7 @@ table, th, td, th {
             @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha')])
 
             <div class="form-group">
+                Situação:
                 <label class='w-100'>                    
                     <select name="morto" class="form-control">
                         <option value="0" selected>Vivo</option>                        

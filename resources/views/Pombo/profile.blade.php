@@ -54,6 +54,7 @@
                                 <h6 class="d-block"><a style="color: #D9230F">Anilha: </a>{{$pombo->anilha}}</h6>
                                     <h6 class="d-block"><a style="color: #D9230F">Pombal: </a>{{$pombo->pombal}}</h6>
                                 <h6 class="d-block"><a style="color: #D9230F">Idade: </a>{{$interval->y}} anos</h6>
+                                <h6 class="d-block"><a style="color: #D9230F">Situação: </a>{{ (($pombo->morto==0) ? 'Vivo' : (($pombo->morto==1) ? 'Morto' : (($pombo->morto==2) ? 'Doado' : (($pombo->morto==3) ? 'Perdido' : '')))) }}</h6>
                                 </div>                                
                             </div>
                         </div>

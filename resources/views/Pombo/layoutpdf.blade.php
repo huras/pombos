@@ -118,7 +118,7 @@
         <label class="spacepdf" for="">Nome: </label>
         <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->nome}} {!!$pombo->morto == 1 ? '(morto)' :  ''!!}</label>
         <label class="spacepdf" for="">Pombal: </label>
-        <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->pombal}}</label>
+        <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->pombal}}</label>        
     </h6>    
 </div>
 
@@ -138,6 +138,9 @@
                     @endif
                 @endif
             @endforeach    
+        @if(!$pombo->mae)
+            <a style="font-weight: normal;"> Sem mae</a>
+        @endif
         </label>      
 </div>
 <hr />
@@ -150,10 +153,18 @@
         @if ($pombo->mae)        
             @if($pombo->mae_id == $pomboCad->id)
                 <a style="font-weight: normal;"> {{$pombo->mae->anilha}} - {{$pombo->mae->nome}}  {!!$pombo->mae->morto == 1 ? '(morto)' :  ''!!}</a>
-            @endif
-        @endif
+            @endif                        
+        @endif        
         @endforeach
+        @if(!$pombo->mae)
+            <a style="font-weight: normal;"> Sem mae</a>
+        @endif
     </label>
+</div>
+<hr />
+
+<div class="" style="display: flex;flex-direction: row; justify-content: space-between">    
+    <label class="" style="font-weight:bold;">Situação: <a style="text-decoration: none;font-weight:normal; color: black;">{{ (($pombo->morto==0) ? 'Vivo' : (($pombo->morto==1) ? 'Morto' : (($pombo->morto==2) ? 'Doado' : (($pombo->morto==3) ? 'Perdido' : '')))) }}</a></label> 
 </div>
 <hr />
 
@@ -170,6 +181,10 @@
     <textarea name="" id="" cols="30" rows="10" style="border: none; background: transparent;"> {{$pombo->obs}} </textarea>    
 </div>
 </div>
+
+
+
+
 
 </body>
 
