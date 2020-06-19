@@ -115,6 +115,7 @@
 }
 .genealogic-tree{
     min-height: 0px !important;
+    margin-left: -15px !important;
 }
 .info .nome{
         /* width: 100%; */
