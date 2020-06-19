@@ -129,7 +129,7 @@
 <hr />
 
 <div class="" style="display: flex;flex-direction: row; justify-content: space-between">
-        <label style="font-weight:bold;">Sexo: <label style="font-weight:normal;" for="">{{($pombo->macho == '1') ? 'Macho' : 'Feminino' }}</label></label>                
+        <label style="font-weight:bold;">Sexo: <label style="font-weight:normal;" for="">{{($pombo->macho == '1') ? 'Macho' : 'Fêmea' }}</label></label>                
         <label class="" style="font-weight:bold;">Pai: 
             @foreach($pombos as $pomboCad)
                 @if ($pombo->pai)            
