@@ -101,7 +101,34 @@
 .pombo-pai-mae{
   margin-bottom: calc(40px);
 }
+.info-gerais{
+    font-size: 18px;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.itens{
+    /* margin: 8px; */
+    margin-right: 50px;
+    margin-left: 50px;
+}
+.genealogic-tree{
+    min-height: 0px !important;
+}
+.info .nome{
+        /* width: 100%; */
+        /* text-align: center; */
+        /* margin-bottom: 4px; */
+        font-size: 18px !important;
+      }
 
+      .info .anilha{
+        /* width: 100%; */
+        /* text-align: center; */
+        /* margin-top: 4px; */
+        font-size: 18px !important;
+      }
 </style>
 
 <body id="container" style="background-color: transparent" onload="window.print();">
@@ -112,25 +139,27 @@
 </div>
 
 <div class="userData ml-3" style="display: flex; flex-direction: row; margin-bottom: 25px;justify-content: center;">
-    <h6 class="d-block" style="font-size: 20px; font-weight: bold;">
+    <div class="d-block" style="font-size: 30px; font-weight: bold;">
         <label class="" for="">Anilha: </label>
         <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->anilha}}</label>
         <label class="spacepdf" for="">Nome: </label>
         <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->nome}} {!!$pombo->morto == 1 ? '(morto)' :  ''!!}</label>
         <label class="spacepdf" for="">Pombal: </label>
         <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->pombal}}</label>        
-    </h6>    
+    </div>    
 </div>
 
-<div class="" style="display: flex;flex-direction: row; justify-content: space-between">
+<div class="info-gerais">
+
+<div class="itens" style="display: flex;flex-direction: row; justify-content: space-between; margin-top: 1rem;">
     <label style="font-weight:bold;">Data de nascimento: <label style="font-weight:normal;" for=""> <?php echo strftime('%A, %d de %B de %Y', strtotime($pombo->nascimento));?></label> </label>
-    <label class="" style="font-weight:bold;">Cor: <a style="text-decoration: none;font-weight:normal; color: black;">{{$pombo->cor}}</a></label> 
+    <label class="itens" style="font-weight:bold;">Cor: <a style="text-decoration: none;font-weight:normal; color: black;">{{$pombo->cor}}</a></label> 
 </div>
 <hr />
 
-<div class="" style="display: flex;flex-direction: row; justify-content: space-between">
+<div class="itens" style="display: flex;flex-direction: row; justify-content: space-between">
         <label style="font-weight:bold;">Sexo: <label style="font-weight:normal;" for="">{{($pombo->macho == '1') ? 'Macho' : 'Fêmea' }}</label></label>                
-        <label class="" style="font-weight:bold;">Pai: 
+        <label class="itens" style="font-weight:bold;">Pai: 
             @foreach($pombos as $pomboCad)
                 @if ($pombo->pai)            
                     @if($pombo->pai_id == $pomboCad->id)
@@ -145,10 +174,10 @@
 </div>
 <hr />
 
-<div class="" style="display: flex;flex-direction: row; justify-content: space-between">
+<div class="itens" style="display: flex;flex-direction: row; justify-content: space-between">
     <label style="font-weight:bold; color: black !important;">Idade: <a style="font-weight: normal;">{{$interval->y}} anos</a></label>        
       
-    <label class="" style="font-weight:bold;">Mãe:         
+    <label class="itens" style="font-weight:bold;">Mãe:         
         @foreach($pombos as $pomboCad)
         @if ($pombo->mae)        
             @if($pombo->mae_id == $pomboCad->id)
@@ -157,18 +186,18 @@
         @endif        
         @endforeach
         @if(!$pombo->mae)
-            <a style="font-weight: normal;"> Sem mae</a>
+            <a style="font-weight: normal;"> Sem mãe</a>
         @endif
     </label>
 </div>
 <hr />
 
-<div class="" style="display: flex;flex-direction: row; justify-content: space-between">    
-    <label class="" style="font-weight:bold;">Situação: <a style="text-decoration: none;font-weight:normal; color: black;">{{ (($pombo->morto==0) ? 'Vivo' : (($pombo->morto==1) ? 'Morto' : (($pombo->morto==2) ? 'Doado' : (($pombo->morto==3) ? 'Perdido' : '')))) }}</a></label> 
+<div class="itens" style="margin: 0;display: flex;flex-direction: row; justify-content: space-between">    
+    <label class="itens" style="font-weight:bold;">Situação: <a style="text-decoration: none;font-weight:normal; color: black;">{{ (($pombo->morto==0) ? 'Vivo' : (($pombo->morto==1) ? 'Morto' : (($pombo->morto==2) ? 'Doado' : (($pombo->morto==3) ? 'Perdido' : '')))) }}</a></label> 
 </div>
 <hr />
 
-<div class="">
+<div class="itens">
     <label style="font-weight:bold;">Árvore genealógica: </label>    
     <div id='gene-div' style="background-color: white">
         @include('components.genealogic-tree', ['pombo' => $pombo, 'print' => true])
@@ -176,7 +205,7 @@
 </div>
 <hr />
 
-<div class="" style="display: flex">
+<div class="itens" style="display: flex">
     <label style="margin-top: 2px;font-weight:bold;">Observações: </label>
     <textarea name="" id="" cols="30" rows="10" style="border: none; background: transparent;"> {{$pombo->obs}} </textarea>    
 </div>
@@ -184,7 +213,7 @@
 
 
 
-
+</div>
 
 </body>
 
