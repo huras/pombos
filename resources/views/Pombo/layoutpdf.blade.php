@@ -138,8 +138,8 @@
                     @endif
                 @endif
             @endforeach    
-        @if(!$pombo->mae)
-            <a style="font-weight: normal;"> Sem mae</a>
+        @if(!$pombo->pai)
+            <a style="font-weight: normal;"> Sem pai</a>
         @endif
         </label>      
 </div>

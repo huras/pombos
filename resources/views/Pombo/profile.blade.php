@@ -125,6 +125,10 @@
                                                         @endforeach
                                                     </td>
                                                 @else
+
+                                            @if(!$pombo->pai)
+                                                <td><a style="font-weight: normal;"> Sem pai</a></td>
+                                            @endif
                                                     <span title='Ainda não cadastrado'> {{$pombo->temp_pai}} </span>
                                                 @endif
                                             </div>
@@ -144,6 +148,10 @@
                                                         @endforeach
                                                     </td>
                                                 @else
+
+                                            @if(!$pombo->mae)
+                                                <td><a style="font-weight: normal;"> Sem mãe</a></td>
+                                            @endif
                                                     <span title='Ainda não cadastrado'>{{$pombo->temp_mae}} </span>
                                                 @endif
                                             </div>
