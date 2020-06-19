@@ -130,6 +130,15 @@
         /* margin-top: 4px; */
         font-size: 18px !important;
       }
+      .anilhatext{
+        align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 30px;
+     font-weight: bold;
+      width: 100%;
+       align-items: center
+      }
 </style>
 
 <body id="container" style="background-color: transparent" onload="window.print();">
@@ -139,10 +148,13 @@
     <img src="{{ (isset($pombo->foto)) ? '/public/img/pombo/'.$pombo->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg'}}" id="imgProfile" style="width: 320px; height: 240px;  margin-top: 15px;" class="img-thumbnail" />                                     
 </div>
 
-<div class="userData ml-3" style="display: flex; flex-direction: row; margin-bottom: 25px;justify-content: center;">
-    <div class="d-block" style="font-size: 30px; font-weight: bold;">
-        <label class="" for="">Anilha: </label>
+<div class="anilhatext">
+    <label class="" for="">Anilha: </label>
         <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->anilha}}</label>
+    </div>
+
+<div class="userData ml-3" style="display: flex; flex-direction: row; margin-bottom: 25px;justify-content: center;">       
+    <div class="d-block" style="font-size: 30px; font-weight: bold;">        
         <label class="spacepdf" for="">Nome: </label>
         <label for="" style="color: #D9230F; text-decoration: none;">{{$pombo->nome}} {!!$pombo->morto == 1 ? '(morto)' :  ''!!}</label>
         <label class="spacepdf" for="">Pombal: </label>
