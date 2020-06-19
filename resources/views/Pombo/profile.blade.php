@@ -124,12 +124,13 @@
                                                             @endif
                                                         @endforeach
                                                     </td>
-                                                @else
-
+                                                @else                                            
                                             @if(!$pombo->pai)
-                                                <td><a style="font-weight: normal;"> Sem pai</a></td>
-                                            @endif
-                                                    <span title='Ainda não cadastrado'> {{$pombo->temp_pai}} </span>
+                                            <span title='Ainda não cadastrado'>{{$pombo->temp_pai}} </span>
+                                                    @if (!$pombo->temp_pai)
+                                                    <td><a style="font-weight: normal;">Sem pai</a></td>
+                                                    @endif                                                
+                                            @endif   
                                                 @endif
                                             </div>
                                         </div>
@@ -150,9 +151,11 @@
                                                 @else
 
                                             @if(!$pombo->mae)
-                                                <td><a style="font-weight: normal;"> Sem mãe</a></td>
-                                            @endif
-                                                    <span title='Ainda não cadastrado'>{{$pombo->temp_mae}} </span>
+                                            <span title='Ainda não cadastrado'>{{$pombo->temp_mae}} </span>
+                                                    @if (!$pombo->temp_mae)
+                                                    <td><a style="font-weight: normal;">Sem mãe</a></td>
+                                                    @endif                                                
+                                            @endif                                                    
                                                 @endif
                                             </div>
                                         </div>
