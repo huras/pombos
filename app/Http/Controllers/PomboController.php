@@ -306,14 +306,14 @@ class PomboController extends Controller
         $i = 2;
         foreach($pombos as $pombo){        
             $activeSheet->setCellValue('A'.$i , $pombo['anilha']);
-                $activeSheet->setCellValue('B'.$i , utf8_encode($pombo['nome']));
+                $activeSheet->setCellValue('B'.$i , $pombo['nome']);
                 $activeSheet->setCellValue('C'.$i , $pombo['nascimento']);
                     if($pombo['macho'] == 1){
                         $activeSheet->setCellValue('D'.$i , 'Macho');    
                     } else {
                         $activeSheet->setCellValue('D'.$i , 'Fêmea');
                     }                
-                $activeSheet->setCellValue('E'.$i , utf8_encode($pombo['cor']));
+                $activeSheet->setCellValue('E'.$i , $pombo['cor']);
                 // if($pombo['pai_id']){                    
                 // }
                 // $activeSheet->setCellValue('G'.$i , $pombo['pai_id']);
@@ -324,7 +324,7 @@ class PomboController extends Controller
                         $activeSheet->setCellValue('F'.$i ,'Vivo');
                     }                
                 $activeSheet->setCellValue('G'.$i , $pombo['pombal']);
-                $activeSheet->setCellValue('H'.$i , utf8_encode($pombo['obs']));
+                $activeSheet->setCellValue('H'.$i , $pombo['obs']);
                 $i++;
             }
 
