@@ -220,7 +220,7 @@
 
 <div class="itens" style="display: flex">
     <label style="margin-top: 2px;font-weight:bold;">Observações: </label>
-    <textarea name="" id="" cols="30" rows="10" style="border: none; background: transparent;"> {{$pombo->obs}} </textarea>    
+    <textarea name="" id="" cols="80" rows="9" style="border: none; background: transparent;"> {{$pombo->obs}} </textarea>    
 </div>
 </div>
 
