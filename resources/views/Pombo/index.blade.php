@@ -151,7 +151,7 @@
       </thead>
       <tbody>
           @foreach($pombos as $item)
-          <tr {!!$item->morto == 1 ? 'style="background-color:rgb(0,0,0); color: white;"' : '' !!} id='xaxax-{{$item->id}}' >
+          <tr {!!$item->morto == 1 ? 'style="background-color:rgb(65,65,65); color: white;"' : '' !!} id='xaxax-{{$item->id}}' >
             @if (Auth::user()->type != 0)
               <td>{{$item->id}}</td>
               <td>                 
