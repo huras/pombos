@@ -172,25 +172,15 @@
 
 <div class="itens" style="display: flex;flex-direction: row; justify-content: space-between">
         <label style="font-weight:bold;">Sexo: <label style="font-weight:normal;" for="">{{($pombo->macho == '1') ? 'Macho' : 'Fêmea' }}</label></label>                
-        <label class="itens" style="font-weight:bold;">Pai: 
-            @foreach($pombos as $pomboCad)
-                @if ($pombo->pai)            
-                    @if($pombo->pai_id == $pomboCad->id)
-                        <a style="font-weight: normal;"> {{$pombo->pai->anilha}} - {{$pombo->pai->nome}} {!!$pombo->pai->morto == 1 ? '(morto)' :  ''!!}</a>
-                    @endif
-                @endif
-            @endforeach    
-        @if(!$pombo->pai)
-            <a style="font-weight: normal;"> Sem pai</a>
-        @endif
-        </label>      
+
+        <label class="itens" style="font-weight:bold;">Situação: <a style="text-decoration: none;font-weight:normal; color: black;">{{ (($pombo->morto==0) ? 'Vivo' : (($pombo->morto==1) ? 'Morto' : (($pombo->morto==2) ? 'Doado' : (($pombo->morto==3) ? 'Perdido' : '')))) }}</a></label> 
 </div>
 <hr />
 
 <div class="itens" style="display: flex;flex-direction: row; justify-content: space-between">
-    <label style="font-weight:bold; color: black !important;">Idade: <a style="font-weight: normal;">{{$interval->y}} anos</a></label>        
+    {{-- <label style="font-weight:bold; color: black !important;">Idade: <a style="font-weight: normal;">{{$interval->y}} anos</a></label>         --}}
       
-    <label class="itens" style="font-weight:bold;">Mãe:         
+    <label class="antesEra-itens" style="font-weight:bold;">Mãe:         
         @foreach($pombos as $pomboCad)
         @if ($pombo->mae)        
             @if($pombo->mae_id == $pomboCad->id)
@@ -202,12 +192,25 @@
             <a style="font-weight: normal;"> Sem mãe</a>
         @endif
     </label>
-</div>
-<hr />
 
-<div class="itens" style="margin: 0;display: flex;flex-direction: row; justify-content: space-between">    
-    <label class="itens" style="font-weight:bold;">Situação: <a style="text-decoration: none;font-weight:normal; color: black;">{{ (($pombo->morto==0) ? 'Vivo' : (($pombo->morto==1) ? 'Morto' : (($pombo->morto==2) ? 'Doado' : (($pombo->morto==3) ? 'Perdido' : '')))) }}</a></label> 
+    <label class="itens" style="font-weight:bold;">Pai: 
+        @foreach($pombos as $pomboCad)
+            @if ($pombo->pai)            
+                @if($pombo->pai_id == $pomboCad->id)
+                    <a style="font-weight: normal;"> {{$pombo->pai->anilha}} - {{$pombo->pai->nome}} {!!$pombo->pai->morto == 1 ? '(morto)' :  ''!!}</a>
+                @endif
+            @endif
+        @endforeach    
+    @if(!$pombo->pai)
+        <a style="font-weight: normal;"> Sem pai</a>
+    @endif
+    </label>      
 </div>
+{{-- <hr /> --}}
+
+{{-- <div class="itens" style="margin: 0;display: flex;flex-direction: row; justify-content: space-between">    
+    
+</div> --}}
 <hr />
 
 <div class="itens">
