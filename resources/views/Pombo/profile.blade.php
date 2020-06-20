@@ -126,7 +126,7 @@
                                                     </td>
                                                 @else                                            
                                             @if(!$pombo->pai)
-                                            <span title='Ainda não cadastrado'>{{$pombo->temp_pai}} (temporário) </span>
+                                            <span title='Ainda não cadastrado'>{{$pombo->temp_pai ? ($pombo->temp_pai ' (temporário)') : ''}}</span>
                                                     @if (!$pombo->temp_pai)
                                                     <td><a style="font-weight: normal;">Sem pai</a></td>
                                                     @endif                                                
@@ -151,7 +151,7 @@
                                                 @else
 
                                             @if(!$pombo->mae)
-                                            <span title='Ainda não cadastrado'>{{$pombo->temp_mae}} (temporário) </span>
+                                            <span title='Ainda não cadastrado'>{{$pombo->temp_mae ? ($pombo->temp_mae ' (temporário)') : ''}} </span>
                                                     @if (!$pombo->temp_mae)
                                                     <td><a style="font-weight: normal;">Sem mãe</a></td>
                                                     @endif                                                
