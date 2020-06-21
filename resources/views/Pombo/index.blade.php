@@ -161,7 +161,7 @@
                 </label>
               </td>
             @endif
-            <td style="display: none">{{$item->morto == 1 ? 'Morto' : 'Vivo'}}</td>            
+            <td style="display: none">{{(($item->morto==0) ? 'Vivo' : (($item->morto==1) ? 'Morto' : (($item->morto==2) ? 'Doado' : (($item->morto==3) ? 'Perdido' : ''))))}}</td>            
               <td>
                   @if($item->foto)
                       <img loading = "lazy" style='max-width: 50px; border-radius: 50%; height: 50px;' src='/public/img/pombo/{{$item->foto}}'>

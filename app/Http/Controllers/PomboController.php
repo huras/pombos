@@ -10,6 +10,7 @@ use App\Models\Usuario;
 use Validator;
 use Intervention\Image\ImageManagerStatic as Image;
 use Barryvdh\DomPDF\Facade as PDF;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
@@ -360,7 +361,7 @@ class PomboController extends Controller
                 $i++;
             }
 
-            $filename = 'pombos.xlsx';
+            $filename = 'Cadastro dos pombos xlsx';
 
             header('Content-Type: application/vnd.ms-excel');
             header('Content-Disposition: attachment;filename="' . $filename);
