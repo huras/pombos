@@ -133,7 +133,7 @@
       <thead>        
           <tr>
             @if (Auth::user()->type != 0)
-              <td>ID</td>
+              <td style="display: none">ID</td>
               <td>  </td>
             @endif
             <td style="display: none">Morto?</td>
@@ -153,7 +153,7 @@
           @foreach($pombos as $item)
           <tr {!!$item->morto == 1 ? 'style="background-color:rgb(65,65,65); color: white;"' : '' !!} id='xaxax-{{$item->id}}' >
             @if (Auth::user()->type != 0)
-              <td>{{$item->id}}</td>
+              <td style="display: none">{{$item->id}}</td>
               <td>                 
                 <label class="custom-checkbox">
                   <input value='{{$item->id}}' type="checkbox" onchange="selecionaPombo({{$item->id}})"> 

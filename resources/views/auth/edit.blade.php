@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label class='w-100'>
                     <span>Tipo de Usuário:</span>
-                    <?php $types = [1 => 'Edita', 0 => 'Vizualiza', 2 => 'Administra'] ?>
+                    <?php $types = [1 => 'Edita', 0 => 'Visualiza', 2 => 'Administra'] ?>
                     <select name="type" class="form-control">
                         @foreach($types as $key => $type)
                             <option value="{{$key}}" 
