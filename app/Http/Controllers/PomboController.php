@@ -361,7 +361,7 @@ class PomboController extends Controller
                 $i++;
             }
 
-            $filename = 'Cadastro dos pombos xlsx';
+            $filename = 'Cadastro dos pombos.xlsx';
 
             header('Content-Type: application/vnd.ms-excel');
             header('Content-Disposition: attachment;filename="' . $filename);
