@@ -87,9 +87,14 @@
                                             </div>
                                             <div class="col-md-8 col-6">                                                
                                                 <?php
-                                                    $diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];                                                    
-                                                    echo $diasSemana[strftime('%w', strtotime($pombo->nascimento))];
-                                                    echo strftime(', %d de %B de %Y', strtotime($pombo->nascimento));?>
+                                                    if($pombo->nascimento != '0001-01-01'){
+                                                        $diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];                                                                                                        
+                                                        echo $diasSemana[strftime('%w', strtotime($pombo->nascimento))];
+                                                        echo strftime(', %d de %B de %Y', strtotime($pombo->nascimento));
+                                                    } else {
+                                                        echo 'Data de nascimento não informada';
+                                                    }
+                                                ?>
                                             </div>
                                         </div>
                                         <hr />                                        
