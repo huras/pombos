@@ -161,8 +161,8 @@
           <img class='picture' src="{{ (isset($pombo->mae->mae->foto) ? ''.$pombo->mae->mae->foto : 'https://www.policiajudiciaria.pt/wp-content/uploads/2004/04/sem-foto.jpg' ) }}">
         @endif
         <div class='info'>
-          <div class='nome'> {!! isset($pombo->mae) ? (isset($pombo->mae->mae) ? $pombo->mae->mae->nome : (($pombo->mae->mae_id == 0) ? '<span style="color: #d4d4d4"> Sem avó paterna </span>' : '<span style="color: #d4d4d4"> Cadastro deletado </span>') ) : '<span style="color: #d4d4d4"> Sem avó paterna </span>' !!} {{isset($pombo->mae->mae) ? (($pombo->mae->mae->macho == 1) ? '♂' : '♀') : ''}} </div>
-          <div class='anilha'> {!! isset($pombo->mae) ? (isset($pombo->mae->mae) ? $pombo->mae->mae->anilha : (($pombo->mae->mae_id == 0) ? '<span style="color: #d4d4d4"> Sem avó paterna </span>' : '<span style="color: #d4d4d4"> Cadastro deletado </span>')  ) : '<span style="color: #d4d4d4"> Sem avó paterna </span>' !!} </div>
+          <div class='nome'> {!! isset($pombo->mae) ? (isset($pombo->mae->mae) ? $pombo->mae->mae->nome : (($pombo->mae->mae_id == 0) ? '<span style="color: #d4d4d4"> Sem avó paterna </span>' : '<span style="color: #d4d4d4"> Cadastro deletado </span>') ) : '<span style="color: #d4d4d4"> Sem avó materna </span>' !!} {{isset($pombo->mae->mae) ? (($pombo->mae->mae->macho == 1) ? '♂' : '♀') : ''}} </div>
+          <div class='anilha'> {!! isset($pombo->mae) ? (isset($pombo->mae->mae) ? $pombo->mae->mae->anilha : (($pombo->mae->mae_id == 0) ? '<span style="color: #d4d4d4"> Sem avó paterna </span>' : '<span style="color: #d4d4d4"> Cadastro deletado </span>')  ) : '<span style="color: #d4d4d4"> Sem avó materna </span>' !!} </div>
         </div>                      
       </div>
     </div>
