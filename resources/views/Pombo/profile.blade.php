@@ -151,7 +151,7 @@
                                                 @else
 
                                             @if(!$pombo->mae)
-                                            <span title='Ainda não cadastrado'>{{isset($pombo->temp_pai) ? ($pombo->temp_pai.' (temporário)') : ''}}</span>
+                                            <span title='Ainda não cadastrado'>{{isset($pombo->temp_mae) ? ($pombo->temp_mae.' (temporário)') : ''}}</span>
                                                     @if (!$pombo->temp_mae)
                                                     <td><a style="font-weight: normal;">Sem mãe</a></td>
                                                     @endif                                                
