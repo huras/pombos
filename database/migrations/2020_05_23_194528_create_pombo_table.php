@@ -15,7 +15,7 @@ class CreatePomboTable extends Migration
     {
         Schema::create('pombo', function (Blueprint $table) {
             $table->id();
-            $table->string('anilha')->unique();
+            $table->string('anilha')->unique()->nullable();;
             $table->string('nome')->nullable();
             $table->date('nascimento')->nullable();
             $table->unsignedTinyInteger('macho');

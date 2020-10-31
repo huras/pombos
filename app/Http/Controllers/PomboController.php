@@ -44,7 +44,7 @@ class PomboController extends Controller
         }
 
         $val = $this->validatePombo($request->all());
-        $valAnilha = $this->validateAnilha($request->all());
+        // $valAnilha = $this->validateAnilha($request->all());
 
         //verificar se teve algum erro na validação, se sim, retorna pra pagina
         if ($val->fails()) {
@@ -54,11 +54,11 @@ class PomboController extends Controller
         }
 
         //Validaçao da anilha separada, para não atrapalhar a page de edição.
-        if ($valAnilha->fails()) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors($valAnilha);
-        }
+        // if ($valAnilha->fails()) {
+        //     return redirect()->back()
+        //         ->withInput()
+        //         ->withErrors($valAnilha);
+        // }
 
         $data = $request->all();
 

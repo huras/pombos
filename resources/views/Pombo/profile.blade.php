@@ -11,6 +11,7 @@
     $date = new DateTime($pombo->nascimento);                                
     $now = new DateTime();                                
     $interval = $now->diff($date);                                    
+    
 ?>
 
 
@@ -53,7 +54,7 @@
                                 <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a style="color: #D9230F">{{$pombo->nome}} {!!$pombo->morto == 1 ? '<svg version="1.1" id="Capa_1" style="height: 18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<path d="M356.233,0H155.769L94.96,139.227L163.087,512h185.826l68.127-372.773L356.233,0z M310.446,146.166L310.446,146.166			h-39.444v104.108H241V146.166h-39.444v-30.001H241V69.766h30.001v46.398h39.444V146.166z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>' :  ''!!}</a></h2>
                                 <h6 class="d-block"><a style="color: #D9230F">Anilha: </a>{{$pombo->anilha}}</h6>
                                     <h6 class="d-block"><a style="color: #D9230F">Pombal: </a>{{$pombo->pombal}}</h6>
-                                <h6 class="d-block"><a style="color: #D9230F">Idade: </a>{{$interval->y}} anos</h6>
+                                <h6 class="d-block"><a style="color: #D9230F">Idade: </a>{{ (($pombo->nascimento == '0001-01-01') ? 'Sem data de nascimento' : ($interval->y).' anos') }}</h6>
                                 <h6 class="d-block"><a style="color: #D9230F">Situação: </a>{{ (($pombo->morto==0) ? 'Vivo' : (($pombo->morto==1) ? 'Morto' : (($pombo->morto==2) ? 'Doado' : (($pombo->morto==3) ? 'Perdido' : '')))) }}</h6>
                                 </div>                                
                             </div>

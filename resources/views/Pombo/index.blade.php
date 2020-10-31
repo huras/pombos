@@ -147,6 +147,7 @@
             <td>Pai</td>
             <td>Mãe</td>          
             <td>Ações</td>              
+            <td style="display: none">Obs</td>              
           </tr>
       </thead>
       <tbody>
@@ -243,6 +244,11 @@
                   </div>
                   @endif
               </td>            
+              <td style="display: none">
+                @if ($item->obs)
+                    <span>{{$item->obs}}</span>
+                @endif
+              </td>    
           </tr>
           @endforeach
       </tbody>

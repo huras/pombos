@@ -116,7 +116,7 @@ table, th, td, th {
             <input id="fileinput" type="file" class="form-control integer-mask" name="foto" onchange="inputfoto()" style="margin-bottom: 1rem"/>
             
             
-            @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'value' => $pombo->anilha, 'required' => true])
+            @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'value' => $pombo->anilha])
             @include('components.textInput', ['label'=>'Nome', 'name'=>'nome', 'value' => $pombo->nome])
                 <?php                                
                     $dataBD = $pombo->nascimento;
@@ -167,7 +167,7 @@ table, th, td, th {
                 </select>
             </div>
 
-            @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Ardósia', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourada', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB'), 'valueCad' => $pombo->cor])
+            @include('components.select', ['label'=>'Cor', 'name'=>'cor', $values = array('Azul', 'Azul PB', 'Ardósia', 'Branca', 'Bronze', 'Camurça', 'Chocolate', 'Dourada', 'Dourado Escama', 'Escama', 'Escama PB', 'Fulvo', 'Macotado', 'Mosáico', 'Pigarço', 'Preta', 'Vermelha', 'Vermelha Macotado', 'Vermelho PB', 'Chapinha', 'Escama Macotado', 'Bronze Macotado', 'Azul Macotado', 'Pigarço Branco'), 'valueCad' => $pombo->cor])
 
             @include('components.select', ['label'=>'Pombal', 'name'=>'pombal', $values = array("Olhos D'água", 'Lagoa Santa', 'Pampulha'), 'valueCad' => $pombo->pombal]) 
 
