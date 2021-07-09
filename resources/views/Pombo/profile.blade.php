@@ -104,7 +104,16 @@
                                                 <label style="font-weight:bold;">Sexo: </label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                {{($pombo->macho == '1') ? 'Macho' : 'Fêmea' }}
+                                                @php
+                                                    $sexo = "";
+                                                    if ($pombo->macho == '1')
+                                                        $sexo = 'Macho';
+                                                    else if ($pombo->macho == '0')
+                                                        $sexo = 'Fêmea';
+                                                    else
+                                                        $sexo = 'Não informado';
+                                                @endphp
+                                                {{$sexo}}
                                             </div>
                                         </div>
                                         <hr />

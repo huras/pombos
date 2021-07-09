@@ -63,7 +63,8 @@ class PomboController extends Controller
         $data = $request->all();
 
         // Set date format
-        $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
+        if($data['nascimento'])
+            $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
 
         // converte base64 para imagem e salva
         if ($request->fotocam) {
@@ -141,7 +142,8 @@ class PomboController extends Controller
 
         $pombo = Pombo::find($id);
         // Set date format
-        $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
+        if($data['nascimento'])
+            $data['nascimento'] = $this->dateEmMysql($data['nascimento']);
 
         // converte base64 para imagem e salva
         if ($request->fotocam) {
@@ -249,11 +251,12 @@ class PomboController extends Controller
         $rules = [
             'foto' => 'max:2120',
             'nome' => 'max:200',
-            'nascimento' => 'date_format:d/m/Y',
+            'nascimento' => 'nullable|date_format:d/m/Y',
             'macho' => 'required',
             'pai_id' => 'numeric',
             'mae_id' => 'numeric',
-            'pombal' => 'required',
+            // 'pombal' => 'required',
+            'anilha' => 'required',
         ];
 
         $messages = [
@@ -343,8 +346,10 @@ class PomboController extends Controller
                 $activeSheet->setCellValue('C' . $i, $pombo['nascimento']);
                 if ($pombo['macho'] == 1) {
                     $activeSheet->setCellValue('D' . $i, 'Macho');
-                } else {
+                } else if ($pombo['macho'] == 0) {
                     $activeSheet->setCellValue('D' . $i, 'Fêmea');
+                } else {
+                    $activeSheet->setCellValue('D' . $i, 'Não informado');
                 }
                 $activeSheet->setCellValue('E' . $i, $pombo['cor']);
                 // if($pombo['pai_id']){                    

@@ -203,7 +203,7 @@ table, th, td, th {
             <div class="form-group">
                 <label class='w-100'>
                     <span> Sexo: </span>
-                    <?php $sexos = [1 => 'Macho', 0 => 'Fêmea'] ?>
+                    <?php $sexos = [1 => 'Macho', 0 => 'Fêmea', 2 => 'Não informado'] ?>
                     <select name="macho" class="form-control" id='pombo-sexo'>
                         @foreach($sexos as $key => $sexo)
                             <option value="{{$key}}" 

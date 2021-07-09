@@ -118,20 +118,28 @@ table, th, td, th {
             
             @include('components.textInput', ['label'=>'Anilha', 'name'=>'anilha', 'value' => $pombo->anilha])
             @include('components.textInput', ['label'=>'Nome', 'name'=>'nome', 'value' => $pombo->nome])
-                <?php                                
-                    $dataBD = $pombo->nascimento;
-                    $splitData = explode("-", $dataBD);                
-                    $ano = $splitData[0];
-                    $mes = $splitData[1];
-                    $dia = $splitData[2];
-                    $dataCompleta = $dia.'-'.$mes.'-'.$ano;
+                <?php   
+                    $ano = "";
+                    $mes = "";
+                    $dia = "";
+                    if($pombo->nascimento){
+                        $dataBD = $pombo->nascimento;
+                        $splitData = explode("-", $dataBD);
+                        $ano = $splitData[0];
+                        $mes = $splitData[1];
+                        $dia = $splitData[2];
+                    }
+                    if($dia != "" && $mes != "" && $ano != "")
+                        $dataCompleta = $dia.'-'.$mes.'-'.$ano;
+                    else
+                        $dataCompleta = "";
                 ?>
             @include('components.textInput', ['label'=>'Data de Nascimento', 'name'=>'nascimento', 'mask' => 'date-mask', 'value' => (old('nascimento') ? old('nascimento') : $dataCompleta)])
 
             <div class="form-group">
                 <label class='w-100'>
                     <span> Sexo: </span>
-                    <?php $sexos = [1 => 'Macho', 0 => 'Fêmea'] ?>
+                    <?php $sexos = [1 => 'Macho', 0 => 'Fêmea', 2 => 'Não informado'] ?>
                     <select name="macho" class="form-control">
                         @foreach($sexos as $key => $sexo)
                             <option value="{{$key}}" 

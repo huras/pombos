@@ -171,7 +171,16 @@
 <hr />
 
 <div class="itens" style="display: flex;flex-direction: row; justify-content: space-between">
-        <label style="font-weight:bold;">Sexo: <label style="font-weight:normal;" for="">{{($pombo->macho == '1') ? 'Macho' : 'Fêmea' }}</label></label>                
+        @php
+            $sexo = "";
+            if ($pombo->macho == '1')
+                $sexo = 'Macho';
+            else if ($pombo->macho == '0')
+                $sexo = 'Fêmea';
+            else
+                $sexo = 'Não informado';
+        @endphp
+        <label style="font-weight:bold;">Sexo: <label style="font-weight:normal;" for="">{{$sexo}}</label></label>                
 
         <label class="itens" style="font-weight:bold;">Situação: <a style="text-decoration: none;font-weight:normal; color: black;">{{ (($pombo->morto==0) ? 'Vivo' : (($pombo->morto==1) ? 'Morto' : (($pombo->morto==2) ? 'Doado' : (($pombo->morto==3) ? 'Perdido' : '')))) }}</a></label> 
 </div>
