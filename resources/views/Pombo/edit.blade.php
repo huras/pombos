@@ -58,8 +58,12 @@ table, th, td, th {
     display: none;
 }
 </style>
-
-<script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
+<?php
+function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+?>
+@if(!isMobile())<script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>@endif
 <div class="card uper">
   <div class="card-header">
     Editar Pombo
@@ -75,7 +79,7 @@ table, th, td, th {
     <form method="post" action='/pombo/update/{{$pombo->id}}' method="POST" enctype="multipart/form-data">
             @csrf
                 <label class='w-100' style="justify-content: center;display: flex;">
-                    <div id="camBox" style="width:100%;height:100%;">
+                    @if(!isMobile())<div id="camBox" style="width:100%;height:100%;">
                         <!--POPUP DIALOG BOX TO SHOW LIVE WEBCAM.-->
                         <div class="revdivshowimg" style="top:20%;text-align:center;margin:0 auto;">                    
                             <div id="camera" style="height:auto;text-align:center;margin:0 auto;"></div>                    
@@ -106,7 +110,8 @@ table, th, td, th {
                                 </tr>
                             </tbody>
                         </table>
-                    </div>                    
+                    </div>         
+                    @endif           
                 </label>
 
 
