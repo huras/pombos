@@ -8,6 +8,7 @@
   <link rel="icon" href="https://image.flaticon.com/icons/png/512/47/47092.png" sizes="30x30">
   <title>Pombal WSA</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('css/mobile-version.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
