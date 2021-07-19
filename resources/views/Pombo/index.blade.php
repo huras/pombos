@@ -224,6 +224,10 @@
     align-items: center;
     justify-content: space-evenly;
   }
+
+  table img{
+    display: none !important;
+  }
 }
 </style>
 
