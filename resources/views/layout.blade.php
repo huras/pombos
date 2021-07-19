@@ -9,11 +9,6 @@
   <title>Pombal WSA</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/mobile-version.css') }}" rel="stylesheet" type="text/css" />
-  <style>
-      table img{
-        display: none !important;
-    }
-  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
