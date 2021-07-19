@@ -10,7 +10,7 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/mobile-version.css') }}" rel="stylesheet" type="text/css" />
   <style>
-      table image{
+      table img{
         display: none !important;
     }
   </style>
