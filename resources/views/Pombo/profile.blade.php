@@ -35,6 +35,20 @@
         padding-bottom: 190px;
         transform: scale(3.5);
     }        
+
+    
+@media (max-width: 768px) {
+    .nav {
+  display: flex;
+  flex-wrap: inherit !important;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+  }
+
+
+
     
 </style>
 
