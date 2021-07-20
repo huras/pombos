@@ -315,7 +315,7 @@
               </td>
               <td>
                   <span style='font-size: 0px;'>{{$item->nascimento}}</span>                   
-                  @if(($item->nascimento != '0001-01-01'))
+                  @if(($item->nascimento != NULL))
                     <span>{{date("d/m/Y", strtotime($item->nascimento))}}</span>
                   @else
                     <span> Não informada </span>
