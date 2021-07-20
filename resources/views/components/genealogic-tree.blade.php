@@ -181,4 +181,115 @@
           justify-content: space-evenly;
         }
     @endif
+
+    /* CSS versão mobile */
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+.mobile-only table.dataTable tbody th,
+.mobile-only table.dataTable tbody td {
+  padding: 6px 4px!important;
+  font-size: 12px;
+}
+
+.container {
+  padding: 4px!important;
+}
+
+.mobile-only table {
+  width: 100%!important;
+}
+
+@media (max-width: 768px) {
+  .custom-checkbox .checkmark {
+    height: 20px!important;
+    width: 20px!important;
+  }
+  .custom-checkbox .checkmark:after {
+    left: 7px!important;
+    top: 3px!important;
+  }
+  .buttons-upper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .buttons-upper button {
+    margin: 0!important;
+    margin-bottom: 8px!important;
+  }
+  .genealogic-tree {
+    flex-direction: column;
+    min-width: unset;
+    max-width: 100%;
+    justify-content: flex-start!important;
+  }
+  .parent-pombos {
+    display: flex;
+  }
+  .pombo-gen-slot {
+    margin: 0!important;
+    min-width: unset;
+  }
+  .pombo-gen-slot .nome,
+  .pombo-gen-slot .anilha {
+    font-size: 18px!important;
+  }
+  .parent-pombos .pombo-gen-slot .nome,
+  .parent-pombos .pombo-gen-slot .anilha {
+    font-size: 16px!important;
+  }
+  .paterno-grandparents {
+    padding: 8px 4px;
+    background-color: rgba(0, 60, 255, 0.192);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .materno-grandparents {
+    padding: 8px 4px;
+    background-color: rgba(255, 0, 212, 0.192);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .paterno-grandparents div:first-of-type,
+  .materno-grandparents div:first-of-type {
+    margin-bottom: 12px!important;
+  }
+  .grandparent-pombos .pombo-gen-slot .nome,
+  .grandparent-pombos .pombo-gen-slot .anilha {
+    font-size: 14px!important;
+  }
+  .grandparent-pombos .pombo-gen-slot {
+    /* margin-bottom: 16px!important; */
+  }
+  .pombo-gen-slot .info {
+    width: unset!important;
+  }
+  .grandparent-pombos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  .parent-pombos {
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
 </style>
