@@ -165,7 +165,7 @@
 <div class="info-gerais">
 
 <div class="itens" style="display: flex;flex-direction: row; justify-content: space-between; margin-top: 1rem;">
-    <label style="font-weight:bold;">Data de nascimento: <label style="font-weight:normal;" for=""> <?php echo strftime('%A, %d de %B de %Y', strtotime($pombo->nascimento));?></label> </label>
+    <label style="font-weight:bold;">Data de nascimento: <label style="font-weight:normal;" for="">{{$pombo->nascimento ? (strftime('%A, %d de %B de %Y', strtotime($pombo->nascimento))) : 'Data não informada'}}</label> </label>
     <label class="itens" style="font-weight:bold;">Cor: <a style="text-decoration: none;font-weight:normal; color: black;">{{$pombo->cor}}</a></label> 
 </div>
 <hr />
