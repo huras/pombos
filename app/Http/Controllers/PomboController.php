@@ -313,13 +313,13 @@ class PomboController extends Controller
         $activeSheet = $spreadsheet->getActiveSheet();
 
         // Auto size no range
-        foreach (range('A', 'H') as $columnID) {
+        foreach (range('A', 'I') as $columnID) {
             $spreadsheet->getActiveSheet()->getColumnDimension($columnID)
                 ->setAutoSize(true);
         }
 
         //Cabeçalho negrito
-        foreach (range('A', 'H') as $row) {
+        foreach (range('A', 'I') as $row) {
             $col = 1;
             $spreadsheet->getActiveSheet()->getStyle($row . $col)->getFont()->setBold(true);
         }
@@ -333,7 +333,8 @@ class PomboController extends Controller
         // $activeSheet->setCellValue('H1', 'Mae');
         $activeSheet->setCellValue('F1', 'Morto/Vivo');
         $activeSheet->setCellValue('G1', 'Pombal');
-        $activeSheet->setCellValue('H1', 'obs');
+        $activeSheet->setCellValue('H1', 'Foto');
+        $activeSheet->setCellValue('I1', 'obs');
 
         $pombos = Pombo::all();
         $count = count($pombos);
@@ -362,7 +363,8 @@ class PomboController extends Controller
                     $activeSheet->setCellValue('F' . $i, 'Vivo');
                 }
                 $activeSheet->setCellValue('G' . $i, $pombo['pombal']);
-                $activeSheet->setCellValue('H' . $i, $pombo['obs']);
+                $activeSheet->setCellValue('H' . $i, $pombo['foto']);
+                $activeSheet->setCellValue('I' . $i, $pombo['obs']);                
                 $i++;
             }
 
