@@ -433,10 +433,9 @@
               </div>
             </td>
             <td>                              
-              {{$item->cor}}                
+              {{$item->cor}}
+              <span style='display:none;'>{{$item->obs}}</span>              
             </td>
-          
-            
           </tr>
           @endforeach
       </body>
