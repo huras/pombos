@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="icon" href="https://image.flaticon.com/icons/png/512/47/47092.png" sizes="30x30">
+  {{-- teste git --}}
   <title>Pombal WSA</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('css/mobile-version.css') }}" rel="stylesheet" type="text/css" />
